@@ -1,0 +1,36 @@
+# ====================================================================
+# macOS System Files
+# ====================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two carriage returns
+Icon?
+
+# Thumbnails and filesystem metadata
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ====================================================================
+# Microsoft Office Temporary Files
+# ====================================================================
+# Catches temporary owner files (e.g., ~$document.docx)
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+
+# Word/Office autosave backups
+*.tmp
+
+node_modules/
+.env
+ca.pem
