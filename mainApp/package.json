@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Soma",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node: app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJboss11/LaunchpadProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JJboss11/LaunchpadProject/issues"
+  },
+  "homepage": "https://github.com/JJboss11/LaunchpadProject#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
