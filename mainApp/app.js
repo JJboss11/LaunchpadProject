@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(process.env.DATABASE_URL);
+// console.log(process.env.DATABASE_URL);
 
 const pool = require('./db.js');
 const express = require("express");
@@ -26,5 +26,5 @@ app.get('/test-db', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('MyApp is listening on portt ${port}!');
+    console.log(`MyApp is listening on port ${port}!`);
 });
