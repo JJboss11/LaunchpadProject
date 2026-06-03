@@ -1,0 +1,36 @@
+ {
+  "form": [
+    {
+      "title": "sign up now",
+      "name": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "ConfirmMessage": "."
+    }
+  ],
+  "login": [
+    {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "ConfirmMessage": "."
+    }
+  ],
+  "report": [
+    {
+      "title": "sign up now",
+      "name": "First Name",
+      "lastname": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "Address": "Address",
+      "ConfirmMessage": "."
+    }
+  ]
+}
+
+
+
+  
+

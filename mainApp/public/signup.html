@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sign up page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="signupStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body data-page="form">
+    
+     <nav class = "nav">
+        <a href="index.html" class="logo">Launchpad</a>
+
+        <ul class="nav-links">
+
+        </ul>
+
+        <div class="nav-right">
+        <div class="nav-icons">
+            <i class="fa fa-comment"></i>
+            <i class="fa fa-bell"></i>
+        </div>
+       
+            
+        <a href="report-task.html" class="button">Report Task</a>
+         </div>
+     </nav>
+   
+
+    <main>
+        <section class="imgform" id="imgform">
+            <form action="/form" id="myForm" method="post">
+                <fieldset>
+
+                    <h1 id="title">Create Account</h1>
+
+                    <label for= "Firstname" id= "Firstname"></label>
+                    <input type="text" name="Firstname" required id="Firstname">
+
+                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
+                    <input type="text" name="lastname" required id="lastname">
+
+                    <label for="email" id="emailLabel"> </label>
+                    <input type="email" name="email" required id="email">
+                    
+                    <label for="password" id="passwordLabel"> </label>
+                    <input type="password" name="password" required id="password">
+
+                    <input type="submit" id="Create Account" value="Create Account" class="btn">
+
+                    <p id = "ConfirmMessage"></p>
+
+                    <a href="login.html" class="loginlink">Already have an account? Login here</a>
+
+                 
+                   
+                </fieldset>
+            </form>
+        </section>
+</main>
+
+<footer>
+</footer>
+  <script src="./scripts/joinapp.js"></script>
+</body>
+</html>
