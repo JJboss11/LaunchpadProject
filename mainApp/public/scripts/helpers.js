@@ -22,3 +22,12 @@ if (signoutBtn) {
         window.location.href = 'login.html';
     });
 }
+
+function showPswrd() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
