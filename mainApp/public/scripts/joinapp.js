@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         titleElement.textContent = data.title;
       }
 
-      const nameElement = document.getElementById("Firstname");
+      const nameElement = document.getElementById("firstnameLabel");
       if (nameElement) {
         nameElement.textContent = data.name;
       }
