@@ -34,9 +34,25 @@ body {
 }
 
 .logo-wrap p {
-    margin-top: -4px; 
+    margin-top: -2px; 
+    margin-bottom: 2px !important;
     font-style: italic;
     color: #ffffff;
+}
+
+.logo-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-favicon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 1px;
 }
 
 .nav .nav-links {
