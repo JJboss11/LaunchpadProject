@@ -7,7 +7,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="report.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -21,6 +20,7 @@
         <ul class="nav-links">
             <li><a href="login.html">login</a></li>
             <li><a href="signup.html" class="button">Join Now</a></li>
+            <a href="profile.html"> <i class="fa fa-user" id="profileIcon"></i></a>
         </ul>
 
         <div class="nav-icons">
@@ -28,52 +28,102 @@
             <i class="fa fa-bell"></i>
             <i class="fa fa-search"></i>
         </div>
-
-      </div>
     </nav>
 
-    <aside class="sidebar-ReportTask">
+<aside class="sidebar-report">
 
-            <form action="/form" id="myForm" method="post">
-                <fieldset>
+    <div class="category-label">
+        Category
+    </div>
 
-                    <label for= "Firstname" id= "Firstname"></label>
-                    <input type="text" name="Firstname" required id="Firstname">
+    <div class="category-grid">
 
-                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
-                    <input type="text" name="lastname" required id="lastname">
+        <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
+        <button type="button" class="cat-btn" data-category="Picture"><i class="fa fa-picture-o"></i><span>Picture</span></button>
+        <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
+        <button type="button" class="cat-btn" data-category="Gardening"><i class="fa fa-leaf"></i><span>Gardening</span></button>
+        <button type="button" class="cat-btn" data-category="Report"><i class="fa fa-pencil"></i><span>Report</span></button>
+        <button type="button" class="cat-btn" data-category="Wellbeing"><i class="fa fa-heart"></i><span>Wellbeing</span></button>
+        <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
+        <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
 
-                    <label for="email" id="emailLabel"> </label>
-                    <input type="email" name="email" required id="email">
-                    
-                    <label for="Address" id="AddressLabel"> </label>
-                    <input type="text" name="Address" required id="Address">
+    </div>
 
-                    <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
+</aside>
 
-                    <p id = "ConfirmMessage"></p>
 
-                   
-                </fieldset>
-            </form>
-        </aside>
-  
-    <div class="task-grid"></div>
 
-    <div class="profile-section">
-    <div class="profile-pic">
-        <img id="profilePreview">
-        <i class="fa fa-user" id="profileIcon"></i>
-        <label for="profileUpload" class="camera-overlay">
-        <i class="fa fa-camera"></i>
+    <main class="main-content">
+  <h1 class="page-title">Report a task</h1>
+
+  <form id="reportForm" novalidate>
+
+    <!-- Task details -->
+    <fieldset class="form-section">
+      <legend class="form-section-header">Task details</legend>
+
+      <label for="task-title">Title<span class="req">*</span>
+        <input type="text" class ="task-input" name="title" placeholder="Placeholder" required>
+      </label>
+
+      <label for="task-desc">Description>
+        <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
+      </label>
+
+    </fieldset>
+
+    <!-- Location and Time -->
+    <fieldset class="form-section">
+      <legend class="form-section-header">Location and Time</legend>
+
+       <section class="row-2">
+      <label for="task-address">Address
+        <input type="text" class="task-input" name="address" placeholder="Street address" class="input-medium" required>
         </label>
-        <input type="file" id="profileUpload" accept="image/*" style="display:none;">
-    </div>
-        <p class="profile-name">John Smith</p>
-    </div>
+
+        <label for="task-time">Time
+          <input type="time" class="task-time" name="time" placeholder="HH:MM" required>
+        </label>
+
+        <label for="task-date">Date
+          <input type="date" id="task-date" name="date" placeholder="DD/MM/YY">
+        </label>
+
+      </section>
+    </fieldset>
+
+    <!-- Volunteers needed -->
+    <fieldset class="form-section">
+      <legend class="form-section-header">Volunteers needed</legend>
+      <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
+        <input type="number" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" class="input-small" required>
+      </label>
+    </fieldset>
+
+    <!-- Photo -->
+    <fieldset class="form-section">
+        
+      <legend class="form-section-header">Photo</legend>
+
+      <label for="task-photo" class="photo-upload-area">
+        <i class="fa fa-camera" aria-hidden="true"></i>
+        <span>Click to upload a photo of the issue</span>
+        <small>JPG or PNG max 10MB</small>
+        <input type="file" id="task-photo" name="photo" accept="image/jpeg,image/png" class="sr-only">
+      </label>
+
+    </fieldset>
+
+    <!-- Actions -->
+    <footer class="form-actions">
+      <button type="reset" class="btn-cancel">Cancel</button>
+      <button type="submit" class="btn-submit">Submit</button>
+    </footer>
+
+  </form>
+</main>
 
 
     <script src="scripts/joinapp.js"></script>
-</div>
 </body>
 </html>

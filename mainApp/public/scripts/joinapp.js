@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       const isLogin = currentPath === "login.html";
-      const isReportTask = currentPath === "report-task.html";
+      const isReportTask = currentPath === "profile.html";
       const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : responseData.form[0];
 
 
