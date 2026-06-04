@@ -2,19 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPath = window.location.pathname.split("/").pop();
   if (currentPath === "") {
     currentPath = "index.html";
-
   }
 
   fetch("/scripts/data.json")
     .then((response) => response.json())
     .then((responseData) => {
-
-
       const isLogin = currentPath === "login.html";
       const isReportTask = currentPath === "report-task.html";
       const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : responseData.form[0];
 
-
+      // Set labels from JSON
       const titleElement = document.getElementById("title");
       if (titleElement) {
         titleElement.textContent = data.title;
@@ -42,13 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const AddressElement = document.getElementById("AddressLabel");
       if (AddressElement) {
-          AddressElement.textContent = data.Address;
-        }
-
-      const ConfirmMessageElement = document.getElementById("ConfirmMessage");
-      if (ConfirmMessageElement) {
-        ConfirmMessageElement.textContent = data.ConfirmMessage;
+        AddressElement.textContent = data.Address;
       }
+
+      const successMessage = data.ConfirmMessage;
+      const errorMessage = data.ErrorMessage;
 
       const myForm = document.getElementById("myForm");
       const Name = document.getElementById("firstname");
@@ -56,37 +51,34 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email");
       const password = document.getElementById("password");
       const Address = document.getElementById("Address");
-      const paraConfirmation = document.getElementById("Confirmation");
 
       if (myForm) {
         myForm.addEventListener("submit", (e) => {
           e.preventDefault();
 
-       if (ConfirmMessageElement) {
-         ConfirmMessageElement.textContent = `Hi ${Name.value}, your message has been received, we will contact you at ${email.value}`;
-       }
-
-        const formData = {
-          name: Name.value,
-          lastname: lastname.value,
-          email: email.value,
-          password: password.value,
-          Address: Address.value,
+          const formData = {
+            name: Name ? Name.value : "",
+            lastname: lastname ? lastname.value : "",
+            email: email ? email.value : "",
+            password: password ? password.value : "",
+            Address: Address ? Address.value : "",
         };
 
-        fetch("/form", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        })
-          .then((res) => res.json())
-          .then((responsedata) => {
-            console.log(responsedata);
-            paraConfirmation.textContent = `Hi ${responsedata.name}, your message has been received, we will contact you at ${responsedata.email}`;
+          fetch("/form", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
           })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-    }});
+            .then((res) => res.json())
+            .then((responsedata) => {
+              console.log(responsedata);
+              showToast(successMessage);
+            })
+            .catch((err) => {
+              console.error(err);
+              showToast(errorMessage, "error");
+            });
+        });
+      }
+    });
 });

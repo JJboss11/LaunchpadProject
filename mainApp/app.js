@@ -9,7 +9,7 @@ const port = 3000;
 app.use(express.static('public'));
 
 app.get("/", (req, res) => {
-    res.sendFile('index.html', (err) => {
+    res.sendFile('login.html', (err) => {
         if (err)
             console.log(err);
     });

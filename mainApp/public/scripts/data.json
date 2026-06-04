@@ -1,7 +1,7 @@
  {
   "form": [
     {
-      "title": "sign up now",
+      "title": "Sign up",
       "name": "First Name",
       "lastname": "Last Name",
       "email": "Email",
@@ -14,23 +14,20 @@
       "title": "Login",
       "email": "Email",
       "password": "Password",
-      "ConfirmMessage": "."
+      "ConfirmMessage": "Welcome back! You have logged in successfully.",
+      "ErrorMessage": "Invalid email or password."
     }
   ],
   "report": [
     {
-      "title": "sign up now",
+      "title": "Sign",
       "name": "First Name",
       "lastname": "Last Name",
       "email": "Email",
       "password": "Password",
       "Address": "Address",
-      "ConfirmMessage": "."
+      "ConfirmMessage": "Account created! Welcome to ChipIn.",
+      "ErrorMessage": "Something went wrong, please try again."
     }
   ]
 }
-
-
-
-  
-

@@ -1,14 +1,13 @@
-body{
-    background-image: url("./assests/Birmingham.webp");
+body {
+    background-image: url("./assets/Birmingham.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     margin: 0%;
-    
 }
 
-main{
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +15,8 @@ main{
     padding: 20px;
     box-sizing: border-box;
 }
-form{
+
+form {
     width: 500px;
     margin: 0;
     padding: 25px 30px;
@@ -24,40 +24,56 @@ form{
     border-radius: 16px;
     box-sizing: border-box;
     border: none;
-
 }
 
-fieldset{
+fieldset {
     border: none;
     padding: 0;
     margin: 0;
 }
 
-h1{
+h1 {
     margin: 0;
     color: #5a754f;
     text-align: center;
 }
 
-label{
+label {
     display: block;
     color: #5a754f;
 }
 
-input,textarea{
+input, textarea {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 10px 14px;
     margin: 4px 0 14px 0;
-    box-sizing: border-box; 
-    border: 1px solid #5a754f;
-    border-radius: 6px;
+    box-sizing: border-box;
+    border: 1.5px solid #c2d4bc;
+    border-radius: 8px;
     resize: none;
-    border-bottom: 1px rgb(6, 77, 6);
+    background-color: #f7faf6;
+    color: #2e3d2a;
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn{
+input:focus, textarea:focus {
+    border-color: #5a754f;
+    box-shadow: 0 0 0 3px rgba(90, 117, 79, 0.15);
+    background-color: #ffffff;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #a0b89a;
+    font-style: italic;
+}
+
+.btn {
     margin-top: 30px ;
+    margin-bottom: 10px !important;
     width: 90%;
     max-width: 200px;
     color: #ffffff;
@@ -71,15 +87,23 @@ input,textarea{
     cursor: pointer;
     display: block;
     margin: 30px auto 0;
-
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.loginlink{
+.btn:hover {
+    background-color: #4a6240;
+    transform: scale(1.03);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.loginlink {
     color: #5a754f;
 }
 
-
-.reportForm{
+.reportForm {
     display: flex;
     justify-content: center;
     align-items: center;
