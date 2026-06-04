@@ -15,25 +15,31 @@
 
     <body data-page="home">
 
-        <nav class = "nav">
+        <nav class="nav">
             <div class="logo-wrap">
                 <a href="index.html" class="logo">ChipIn™</a>
                 <p>Every hand makes a difference</p>
             </div>
-            
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="login.html">login</a></li>
-                    <li><a href="signup.html" class="btn">Join Now</a></li>
-                </ul>
 
+            <div class="nav-right">
                 <div class="nav-icons">
                     <i class="fa fa-comment"></i>
                     <i class="fa fa-bell"></i>
-                    <i class="fa fa-search"></i>
                 </div>
-                
-            <a href="report-task.html" class="btn">Report Task</a>
+
+                <div class="nav-divider"></div>
+
+                <a href="report-task.html" class="report-btn">
+                    <span class="report-text">Report Task</span>
+                    <i class="fa fa-plus report-plus"></i>
+                </a>
+
+                <div class="nav-divider"></div>
+
+                <a href="#" class="report-btn" id="signout-btn">
+                    <span class="report-text">Sign out</span>
+                    <i class="fa fa-sign-out report-plus"></i>
+                </a>
             </div>
         </nav>
             
@@ -48,5 +54,7 @@
                 </section>
             </footer>
         </div>
+        <script src="/scripts/helpers.js"></script>
+        <script src="/scripts/joinapp.js"></script>
     </body>
 </html>

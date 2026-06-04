@@ -13,3 +13,12 @@ function showToast(message, type = 'success') {
         toast.classList.remove('show', 'error');
     }, 2000);
 }
+
+const signoutBtn = document.getElementById('signout-btn');
+if (signoutBtn) {
+    signoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        window.location.href = 'login.html';
+    });
+}

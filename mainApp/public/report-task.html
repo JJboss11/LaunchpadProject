@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home page</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report bounty</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="report.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">    
+            <link rel="stylesheet" href="stylesheet.css">
+            <link rel="stylesheet" href="report.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </link>
+    </head>
 
-</head>
+    <body data-page="home">
+        <nav class = "nav">
+            <div class="logo-wrap">
+                <a href="index.html" class="logo">ChipIn™</a>
+                <p>Every hand makes a difference</p>
+            </div>
+    
+            <div class="nav-right">
+                <a href="javascript:history.back()" class="report-btn back-btn">
+                    <span class="report-text">Back</span>
+                </a>
+            </div>
 
-<body data-page="home">
+            <div class="nav-divider"></div>
 
-    <nav class = "nav">
-        <a href="index.html" class="logo">Launchpad</a>
- 
-        <div class="nav-right"></div>
-        <ul class="nav-links">
-            <li><a href="login.html">login</a></li>
-            <li><a href="signup.html" class="button">Join Now</a></li>
-        </ul>
+            <div class="nav-icons">
+                <a href="#" class="report-btn" id="signout-btn">
+                    <span class="report-text">Sign out</span>
+                    <i class="fa fa-sign-out report-plus"></i>
+                </a>
+            </div>
+        </nav>
 
-        <div class="nav-icons">
-            <i class="fa fa-comment"></i>
-            <i class="fa fa-bell"></i>
-            <i class="fa fa-search"></i>
-        </div>
-
-      </div>
-    </nav>
-
-    <aside class="sidebar-ReportTask">
-
+        <aside class="sidebar-ReportTask"></aside>
             <form action="/form" id="myForm" method="post">
                 <fieldset>
 
@@ -52,28 +55,25 @@
                     <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
 
                     <p id = "ConfirmMessage"></p>
-
-                   
                 </fieldset>
             </form>
         </aside>
-  
-    <div class="task-grid"></div>
+    
+        <div class="task-grid"></div>
 
-    <div class="profile-section">
-    <div class="profile-pic">
-        <img id="profilePreview">
-        <i class="fa fa-user" id="profileIcon"></i>
-        <label for="profileUpload" class="camera-overlay">
-        <i class="fa fa-camera"></i>
-        </label>
-        <input type="file" id="profileUpload" accept="image/*" style="display:none;">
-    </div>
-        <p class="profile-name">John Smith</p>
-    </div>
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img id="profilePreview">
+                <i class="fa fa-user" id="profileIcon"></i>
+                <label for="profileUpload" class="camera-overlay">
+                <i class="fa fa-camera"></i>
+                </label>
+                <input type="file" id="profileUpload" accept="image/*" style="display:none;">
+            </div>
+            <p class="profile-name">John Smith</p>
+        </div>
 
-
-    <script src="scripts/joinapp.js"></script>
-</div>
-</body>
+        <script src="/scripts/helpers.js"></script>
+        <script src="scripts/joinapp.js"></script>
+    </body>
 </html>

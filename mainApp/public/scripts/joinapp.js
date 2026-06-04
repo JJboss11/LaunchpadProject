@@ -1,16 +1,24 @@
+//redirect to login if no token
+if (!localStorage.getItem('token') && 
+    !['login.html', 'signup.html'].includes(window.location.pathname.split('/').pop())) {
+    window.location.href = 'login.html';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   let currentPath = window.location.pathname.split("/").pop();
   if (currentPath === "") {
-    currentPath = "index.html";
+    currentPath = "login.html";
   }
+
+    const isLogin = currentPath === "login.html";
+    const isReportTask = currentPath === "report-task.html";
+    const endpoint = isLogin ? "/login" : "/signup"; // 👈 correct endpoint
 
   fetch("/scripts/data.json")
     .then((response) => response.json())
     .then((responseData) => {
-      const isLogin = currentPath === "login.html";
-      const isReportTask = currentPath === "report-task.html";
       const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : responseData.form[0];
-
+  
       // Set labels from JSON
       const titleElement = document.getElementById("title");
       if (titleElement) {
@@ -64,20 +72,31 @@ document.addEventListener("DOMContentLoaded", () => {
             Address: Address ? Address.value : "",
         };
 
-          fetch("/form", {
+          fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
           })
-            .then((res) => res.json())
-            .then((responsedata) => {
-              console.log(responsedata);
-              showToast(successMessage);
-            })
-            .catch((err) => {
-              console.error(err);
-              showToast(errorMessage, "error");
-            });
+          .then((res) => res.json())
+          .then((responsedata) => {
+            if (responsedata.success) {
+              if (isLogin) {
+                  localStorage.setItem('token', responsedata.token);
+                  window.location.href = 'index.html'; 
+              } 
+              else {
+                  localStorage.setItem('token', responsedata.token); 
+                  showToast(successMessage);
+                  setTimeout(() => {window.location.href = 'index.html';}, 1500);
+                }
+          } else {
+              showToast(responsedata.message, "error");
+          }
+          })
+          .catch((err) => {
+            console.error(err);
+            showToast(errorMessage, "error");
+          });
         });
       }
     });
