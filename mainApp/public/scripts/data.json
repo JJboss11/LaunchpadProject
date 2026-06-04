@@ -6,7 +6,8 @@
       "lastname": "Last Name",
       "email": "Email",
       "password": "Password",
-      "ConfirmMessage": "."
+      "ConfirmMessage": "Account created! Welcome to ChipIn.",
+      "ErrorMessage": "Something went wrong, please try again."
     }
   ],
   "login": [
@@ -25,9 +26,7 @@
       "lastname": "Last Name",
       "email": "Email",
       "password": "Password",
-      "Address": "Address",
-      "ConfirmMessage": "Account created! Welcome to ChipIn.",
-      "ErrorMessage": "Something went wrong, please try again."
+      "Address": "Address"
     }
   ]
 }

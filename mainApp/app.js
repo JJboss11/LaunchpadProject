@@ -31,6 +31,22 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
+
+async function getCount(table) {
+    const result = await pool.query(`SELECT COUNT(*) FROM ${table}`);
+    return parseInt(result.rows[0].count);
+}
+
+app.get('/stats', async (req, res) =>  {
+    try {
+        const userNum = await getCount('users');
+        const jobNum = await getCount('job');
+        res.json({ users: userNum, jobs: jobNum });
+    } catch (err) {
+        res.json({ success: false, error: err.message });
+    }
+});
+
 //terminal debug for nodemon
 app.listen(port, () => {
     console.log(`MyApp is listening on port ${port}!`);

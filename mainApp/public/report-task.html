@@ -10,7 +10,7 @@
             <link rel="stylesheet" href="stylesheet.css">
             <link rel="stylesheet" href="report.css">
             <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         </link>
     </head>
 
@@ -23,22 +23,28 @@
                 </div>
                 <p>Every hand makes a difference</p>
             </div>
+
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
     
-            <div class="nav-right">
+            <div class="nav-right" id="nav-right">
                 <a href="javascript:history.back()" class="report-btn back-btn">
                     <span class="report-text">Back</span>
-                </a>
-            </div>
+                </a>            
 
-            <div class="nav-divider"></div>
+                <div class="nav-divider"></div>
 
-            <div class="nav-icons">
-                <a href="#" class="report-btn" id="signout-btn">
-                    <span class="report-text">Sign out</span>
-                    <i class="fa fa-sign-out report-plus"></i>
-                </a>
+                <div class="nav-icons">
+                    <a href="#" class="report-btn" id="signout-btn">
+                        <span class="report-text">Sign out</span>
+                        <i class="fa fa-sign-out report-plus"></i>
+                    </a>
+                </div>
             </div>
         </nav>
+
+        <div class="nav-overlay" id="nav-overlay"></div>
 
         <aside class="sidebar-ReportTask"></aside>
             <form action="/form" id="myForm" method="post">

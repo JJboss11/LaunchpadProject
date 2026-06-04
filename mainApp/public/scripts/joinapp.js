@@ -91,7 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
           } else {
               showToast(responsedata.message, "error");
-          }
+              if (isLogin) {
+                if (email) {
+                  email.classList.add('input-error');
+                }
+
+                if (password) {
+                  password.classList.add('input-error');
+                }
+              }
+            }
           })
           .catch((err) => {
             console.error(err);

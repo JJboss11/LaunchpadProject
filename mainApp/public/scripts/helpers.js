@@ -14,6 +14,7 @@ function showToast(message, type = 'success') {
     }, 2000);
 }
 
+//signout button that deletes JWT token
 const signoutBtn = document.getElementById('signout-btn');
 if (signoutBtn) {
     signoutBtn.addEventListener('click', (e) => {
@@ -23,6 +24,7 @@ if (signoutBtn) {
     });
 }
 
+//show pswrd func for login and signup pages
 function showPswrd() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -30,4 +32,36 @@ function showPswrd() {
     } else {
         x.type = "password";
     }
+}
+
+//get stats for navbar
+function loadStats() {
+    fetch('/stats')
+        .then(res => res.json())
+        .then(data => {
+            const users = document.getElementById('stat-users');
+            const jobs = document.getElementById('stat-jobs');
+            if (users) {
+                users.textContent = data.users;
+            }
+
+            if (jobs) {
+                jobs.textContent = data.jobs;
+            }
+        })
+        .catch(err => console.error(err));
+}
+
+loadStats();
+
+const hamburger = document.getElementById('hamburger');
+const navRight = document.getElementById('nav-right');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navRight.classList.toggle('open');
+        const icon = hamburger.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
 }
