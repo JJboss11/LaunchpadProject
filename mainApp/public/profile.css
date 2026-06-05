@@ -6,6 +6,8 @@ form{
     border-radius: 16px;
     box-sizing: border-box;
     border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
 
 }
 
@@ -93,6 +95,7 @@ input,textarea{
     position: relative;
     cursor: pointer;
 }
+
 
 .camera-overlay {
     position: absolute;

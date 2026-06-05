@@ -60,6 +60,8 @@ input, textarea {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+
+
 input:focus, textarea:focus {
     border-color: #5a754f;
     box-shadow: 0 0 0 3px rgba(90, 117, 79, 0.15);
@@ -146,14 +148,4 @@ label {
 
 .show-password-wrapper label {
     display: inline;
-}
-
-.loginlink {
-    transition: 0.2s ease;
-}
-
-.loginlink:hover {
-    text-decoration: underline;
-    opacity: 0.8;
-    cursor: pointer;
 }

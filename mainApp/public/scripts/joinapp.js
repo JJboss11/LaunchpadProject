@@ -1,6 +1,6 @@
 //redirect to login if no token
 if (!localStorage.getItem('token') && 
-    !['login.html', 'signup.html'].includes(window.location.pathname.split('/').pop())) {
+    !['login.html', 'signup.html', "profile.html"].includes(window.location.pathname.split('/').pop())) {
     window.location.href = 'login.html';
 }
 
@@ -9,19 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentPath === "") {
     currentPath = "login.html";
   }
-
     const isLogin = currentPath === "login.html";
     const isReportTask = currentPath === "report-task.html";
-    const endpoint = isLogin ? "/login" : "/signup"; // 👈 correct endpoint
+    const isProfile = currentPath === "profile.html";
+    const endpoint = isLogin ? "/login" : isProfile ? "/profile" : "/signup"; // 👈 correct endpoint
 
   fetch("/scripts/data.json")
     .then((response) => response.json())
     .then((responseData) => {
-
-
-      const isLogin = currentPath === "login.html";
-      const isReportTask = currentPath === "profile.html";
-      const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : responseData.form[0];
+      const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : isProfile ? responseData.profile[0] : responseData.form[0];
   
       // Set labels from JSON
       const titleElement = document.getElementById("title");

@@ -1,6 +1,5 @@
 const dotenv = require('dotenv');
 dotenv.config();
-
 const pool = require('./db.js');
 const express = require("express");
 const jwt = require('jsonwebtoken');
