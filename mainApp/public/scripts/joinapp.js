@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
 
           const formData = {
-            name: Name ? Name.value : "",
+            firstname: Name ? Name.value : "",
             lastname: lastname ? lastname.value : "",
             email: email ? email.value : "",
             password: password ? password.value : "",

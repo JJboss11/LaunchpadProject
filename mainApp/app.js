@@ -6,6 +6,7 @@ const express = require("express");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const app = express()
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const port = 3000;
 
@@ -58,14 +59,14 @@ const JWT_SECRET = process.env.JWT_TOKEN;
 
 //signup
 app.post('/signup', async (req, res) => {
-    const { name, lastname, email, password, Address } = req.body;
+    const { firstname, lastname, email, password, Address } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const result = await pool.query('INSERT INTO users (firstname, lastname, email, password, address) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, lastname, email, hashedPassword, Address]);
+        const result = await pool.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *', [firstname, lastname, email, hashedPassword]);
         res.json({ success: true, user: result.rows[0] });
     } catch (err) {
         console.error(err);
-        res.status(400).json({ success: false, message: 'Email already exists.' });
+        res.status(400).json({ success: false, message: 'Server error' });
     }
 });
 
