@@ -17,13 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/scripts/data.json")
     .then((response) => response.json())
     .then((responseData) => {
-<<<<<<< Jerome
 
 
       const isLogin = currentPath === "login.html";
       const isReportTask = currentPath === "profile.html";
-=======
->>>>>>> main
       const data = isLogin ? responseData.login[0] : isReportTask ? responseData.report[0] : responseData.form[0];
   
       // Set labels from JSON
