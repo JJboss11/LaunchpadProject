@@ -1,5 +1,3 @@
-
-
 form{
     width: 500px;
     margin: 0;
@@ -57,23 +55,9 @@ input,textarea{
     cursor: pointer;
     display: block;
     margin: 30px auto 0;
-
-}
-
-.btn-delete:hover {
-    background-color: #8b2626;
-    transform: scale(1.03);
-}
-
-.btn-delete:active {
-    transform: scale(0.98);
-}
-
-.btn-delete {
-    background-color: #a63232;
     transition: background-color 0.2s ease, transform 0.1s ease;
-}
 
+}
 
 .btn:hover {
     background-color: #4a6240;
@@ -83,7 +67,6 @@ input,textarea{
 .btn:active {
     transform: scale(0.98);
 }
-
 
 .loginlink{
     color: #5a754f;
@@ -129,13 +112,26 @@ input,textarea{
     font-size: 12px;
 }
 
-.sidebar-ReportTask {
-    position: fixed;
-    top: 85px;
-    left: 0;
-    width: 326px;
-    height: 826px;
-    background-color: #d9d6d6;
-    border-right: 1px solid #000000;
-    overflow-y: auto;
+.sidebar-Profile {
+  position: fixed;
+  top: 85px;
+  left: 0;
+  width: 326px;
+  height: 826px; 
+  background-color: #d9d6d6;
+  border-right: 1px solid #000000;
+}
+
+.btn-delete {
+    background-color: #a63232;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-delete:hover {
+    background-color: #8b2626;
+    transform: scale(1.03);
+}
+
+.btn-delete:active {
+    transform: scale(0.98);
 }

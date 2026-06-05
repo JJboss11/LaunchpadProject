@@ -1,6 +1,6 @@
 //redirect to login if no token
 if (!localStorage.getItem('token') && 
-    !['login.html', 'signup.html', 'profile.html'].includes(window.location.pathname.split('/').pop())) {
+    !['login.html', 'signup.html', "profile.html"].includes(window.location.pathname.split('/').pop())) {
     window.location.href = 'login.html';
 }
 
@@ -110,4 +110,3 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 });
-
