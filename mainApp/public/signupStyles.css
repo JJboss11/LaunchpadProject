@@ -147,3 +147,13 @@ label {
 .show-password-wrapper label {
     display: inline;
 }
+
+.loginlink {
+    transition: 0.2s ease;
+}
+
+.loginlink:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+    cursor: pointer;
+}
