@@ -60,52 +60,75 @@
     <div class="header"></div>
 
     <aside class="sidebar">
+        <div class="filter-header">
+            <span>Filter By</span>
+        </div>
 
     <form id="openForm" method="post">
 
     <h3 id="first-title">Status</h3>
 
-    <label for = "open" id="openLabel"> Open</label>
-    <label><input type="checkbox" id="open" name="open"></label>
+        <label for="open">
+            <input type="checkbox" id="open" name="open">
+            Open
+        </label>
 
-    <label for = "closed" id="closedLabel"> Closed</label>
-    <label><input type="checkbox" id="closed" name="closed"></label>
-     
-    <label for = "Progress" id="ProgressLabel"> In Progress</label>
-    <label><input type="checkbox" id="Progress" name="Progress"></label>
-     
-    <label for = "urgent" id="urgentLabel"> Urgent</label>
-    <label><input type="checkbox" id="urgent" name="urgent"></label>
+        <label for="closed">
+            <input type="checkbox" id="closed" name="closed">
+            Closed
+        </label>
+
+        <label for="Progress">
+            <input type="checkbox" id="Progress" name="Progress">
+            In Progress
+        </label>
+
+        <label for="urgent">
+            <input type="checkbox" id="urgent" name="urgent">
+            Urgent
+        </label>
 
     </form>
 
     <form id ="categoriesForm" method="post">
 
     <h3 id="title">Categories</h3>
-        
-    <label for = "repair" id="repairLabel"> Repair</label>
-    <label><input type="checkbox" id="repair" name="repair"></label>
 
-    <label for = "education" id="educationLabel"> Education</label>
-    <label><input type="checkbox" id="education" name="education"></label>
-     
-    <label for = "leisure" id="leisureLabel"> In Progress</label>
-    <label><input type="checkbox" id="leisure" name="leisure"></label>
+        <label for="repair">
+            <input type="checkbox" id="repair" name="repair">
+            Repair
+        </label>
+
+        <label for="education">
+            <input type="checkbox" id="education" name="education">
+            Education
+        </label>
+
+        <label for="leisure">
+            <input type="checkbox" id="leisure" name="leisure">
+            Leisure
+        </label>
    
     </form>
 
     <form id="volunteersForm" method="post">
 
     <h3 id="title">Volunteers needed</h3>
-        
-    <label for = "1person" id="1personLabel">1 person needed</label>
-    <label><input type="checkbox" id="1person" name="1person"></label>
 
-    <label for = "4person" id="4personLabel">2-4 people needed</label>
-    <label><input type="checkbox" id="4person" name="4person"></label>
-     
-    <label for = "5person" id="5personLabel">5+ people needed</label>
-    <label><input type="checkbox" id="5person" name="5person"></label>
+        <label for="1person">
+            <input type="checkbox" id="1person" name="1person">
+            1 person needed
+        </label>
+
+        <label for="4person">
+            <input type="checkbox" id="4person" name="4person">
+            2-4 people needed
+        </label>
+
+        <label for="5person">
+            <input type="checkbox" id="5person" name="5person">
+            5+ people needed
+        </label>
    
     </form>
 
@@ -118,7 +141,20 @@
     </section>
 
     <section class="task-controls">
-        <!-- search + sort controls -->
+
+        <div class="search-area">
+            <input type="text" placeholder="Search tasks...">
+            <button>Search</button>
+        </div>
+
+        <div class="sort-area">
+            <span>Sort by:</span>
+            <select>
+                <option>Newest</option>
+                <option>Oldest</option>
+            </select>
+        </div>
+
     </section>
 
  <section class="task-grid">
@@ -273,7 +309,21 @@
 
 
     <section class="pagination-container">
-        <!-- pagination -->
+
+        <div class="results-count">
+            Showing 1–9 of 45 results
+        </div>
+
+        <div class="pagination">
+            <button>‹</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>›</button>
+        </div>
+
     </section>
 
 </main>
