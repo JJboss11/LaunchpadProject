@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>profile</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">    
+            <link rel="stylesheet" href="stylesheet.css">
+            <link rel="stylesheet" href="profile.css">
+            <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        </link>
+    </head>
+
+<body data-page="home">
+        <nav class = "nav">
+            <div class="logo-wrap">
+                <div class="logo-inner">
+                    <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
+                    <a href="index.html" class="logo">ChipIn™</a>
+                </div>
+                <p>Every hand makes a difference</p>
+            </div>
+
+            <div class="nav-stats">
+                <span class="nav-stat">
+                    <i class="fa-solid fa-user"></i>
+                    <span id="stat-users">-</span>
+                </span>
+                <span class="nav-stat">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <span id="stat-jobs">-</span>
+                </span>
+            </div>
+        </nav>
+
+    <aside class="sidebar-ReportTask">
+
+            <form action="/form" id="myForm" method="post">
+                <fieldset>
+
+                    <label for= "firstname" id= "firstnameLabel"></label>
+                    <input type="text" name="firstname" required id="firstname">
+
+                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
+                    <input type="text" name="lastname" required id="lastname">
+
+                    <label for="email" id="emailLabel"></label>
+                    <input type="email" name="email" required id="email">
+                    
+                    <label for="Address" id="AddressLabel"></label>
+                    <input type="text" name="Address" required id="Address">
+
+                    <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
+
+                    <p id = "ConfirmMessage"></p>
+
+                   
+                </fieldset>
+            </form>
+            <button type="submit" class="btn btn-delete">Delete account</button>
+        </aside>
+  
+    <div class="task-profile"></div>
+
+    <div class="profile-section">
+    <div class="profile-pic">
+        <img id="profilePreview">
+        <i class="fa fa-user" id="profileIcon"></i>
+        <label for="profileUpload" class="camera-overlay">
+        <i class="fa fa-camera"></i>
+        </label>
+        <input type="file" id="profileUpload" accept="image/*" style="display:none;">
+    </div>
+        <p class="profile-name">John Smith</p>
+    </div>
+
+</div>
+</body>
+<script src="./scripts/joinapp.js"></script>
+</html>

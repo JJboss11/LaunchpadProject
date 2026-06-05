@@ -19,14 +19,16 @@
       "ErrorMessage": "Invalid email or password."
     }
   ],
-  "report": [
+  "profile": [
     {
       "title": "Sign",
       "name": "First Name",
       "lastname": "Last Name",
       "email": "Email",
-      "password": "Password",
-      "Address": "Address"
+      "Address": "Address",
+      "ConfirmMessage": "changes have been made Thank you!.",
+      "ErrorMessage": "Something went wrong, please try again."
     }
   ]
 }
+

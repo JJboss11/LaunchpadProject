@@ -8,6 +8,8 @@ form{
     border-radius: 16px;
     box-sizing: border-box;
     border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
 
 }
 
@@ -58,6 +60,31 @@ input,textarea{
 
 }
 
+.btn-delete:hover {
+    background-color: #8b2626;
+    transform: scale(1.03);
+}
+
+.btn-delete:active {
+    transform: scale(0.98);
+}
+
+.btn-delete {
+    background-color: #a63232;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+
+.btn:hover {
+    background-color: #4a6240;
+    transform: scale(1.03);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+
 .loginlink{
     color: #5a754f;
 }
@@ -86,6 +113,7 @@ input,textarea{
     cursor: pointer;
 }
 
+
 .camera-overlay {
     position: absolute;
     bottom: 0;
@@ -99,4 +127,15 @@ input,textarea{
     justify-content: center;
     cursor: pointer;
     font-size: 12px;
+}
+
+.sidebar-ReportTask {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 326px;
+    height: 826px;
+    background-color: #d9d6d6;
+    border-right: 1px solid #000000;
+    overflow-y: auto;
 }

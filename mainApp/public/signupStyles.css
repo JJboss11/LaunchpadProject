@@ -60,6 +60,16 @@ input, textarea {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+
+.loginlink {
+    transition: 0.2s ease;
+}
+
+.loginlink:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+    cursor: pointer;
+
 input:focus, textarea:focus {
     border-color: #5a754f;
     box-shadow: 0 0 0 3px rgba(90, 117, 79, 0.15);
@@ -75,7 +85,7 @@ input.input-error {
     border-color: #a63232;
     box-shadow: 0 0 0 3px rgba(166, 50, 50, 0.15);
     background-color: #fff8f8;
-}
+}}
 
 .btn {
     margin-top: 30px ;
