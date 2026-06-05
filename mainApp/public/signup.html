@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>sign up page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="signupStyles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign up page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="signupStyles.css">
+        <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
 
-</head>
-<body data-page="form">
-    
-     <nav class = "nav">
-        <a href="index.html" class="logo">Launchpad</a>
+    <body data-page="form">
+        
+        <nav class = "nav">
+            <div class="logo-wrap">
+                <div class="logo-inner">
+                    <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
+                    <a href="index.html" class="logo">ChipIn™</a>
+                </div>
+                <p>Every hand makes a difference</p>
+            </div>
 
-        <ul class="nav-links">
+            <div class="nav-stats">
+                <span class="nav-stat">
+                    <i class="fa-solid fa-user"></i>
+                    <span id="stat-users">-</span>
+                </span>
+                <span class="nav-stat">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <span id="stat-jobs">-</span>
+                </span>
+            </div>
+        </nav>
 
-        </ul>
+        <main>
+            <section class="imgform" id="imgform">
+                <form action="/form" id="myForm" method="post">
+                    <fieldset>
+                        <h1 id="title">Create Account</h1>
 
-        <div class="nav-right">
-        <div class="nav-icons">
-            <i class="fa fa-comment"></i>
-            <i class="fa fa-bell"></i>
-            <a href="profile.html"> <i class="fa fa-user" id="profileIcon"></i></a>
-        </div>
-       
-            
-        <a href="report-task.html" class="button">Report Task</a>
-         </div>
-     </nav>
-   
+                        <label for= "Firstname" id= "firstnameLabel"></label>
+                        <input type="text" name="firstname" required id="firstname">
 
-    <main>
-        <section class="imgform" id="imgform">
-            <form action="/form" id="myForm" method="post">
-                <fieldset>
+                        <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
+                        <input type="text" name="lastname" required id="lastname">
 
-                    <h1 id="title">Create Account</h1>
+                        <label for="email" id="emailLabel"> </label>
+                        <input type="email" name="email" required id="email">
+                        
+                        <label for="password" id="passwordLabel"> </label>
+                        <input type="password" name="password" required id="password">
 
-                    <label for= "Firstname" id= "Firstname"></label>
-                    <input type="text" name="Firstname" required id="Firstname">
+                        <div class="show-password-wrapper">
+                            <input type="checkbox" onclick="showPswrd()" id="showPassword">
+                            <label for="showPassword">Show password</label>
+                        </div>
 
-                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
-                    <input type="text" name="lastname" required id="lastname">
+                        <input type="submit" id="Create Account" value="Create Account" class="btn">
 
-                    <label for="email" id="emailLabel"> </label>
-                    <input type="email" name="email" required id="email">
-                    
-                    <label for="password" id="passwordLabel"> </label>
-                    <input type="password" name="password" required id="password">
+                        <p id = "ConfirmMessage"></p>
 
-                    <input type="submit" id="Create Account" value="Create Account" class="btn">
+                        <a href="login.html" class="loginlink">Already have an account? Login here</a>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
 
-                    <p id = "ConfirmMessage"></p>
-
-                    <a href="login.html" class="loginlink">Already have an account? Login here</a>
-
-                 
-                   
-                </fieldset>
-            </form>
-        </section>
-</main>
-
-<footer>
-</footer>
-  <script src="./scripts/joinapp.js"></script>
-</body>
+            <footer>
+            </footer>
+        <script src="./scripts/helpers.js"></script>
+        <script src="./scripts/joinapp.js"></script>
+    </body>
 </html>
