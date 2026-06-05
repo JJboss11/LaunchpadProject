@@ -1,5 +1,3 @@
-
-
 form{
     width: 500px;
     margin: 0;
@@ -55,7 +53,17 @@ input,textarea{
     cursor: pointer;
     display: block;
     margin: 30px auto 0;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 
+}
+
+.btn:hover {
+    background-color: #4a6240;
+    transform: scale(1.03);
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 .loginlink{
@@ -113,8 +121,14 @@ input,textarea{
 
 .btn-delete {
     background-color: #a63232;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn-delete:hover {
     background-color: #8b2626;
+    transform: scale(1.03);
+}
+
+.btn-delete:active {
+    transform: scale(0.98);
 }
