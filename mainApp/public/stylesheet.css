@@ -190,23 +190,23 @@ a {
 }
 
 .sidebar-ReportTask {
-  position: fixed;
-  top: 85px;
-  left: 0;
-  width: 326px;
-  height: 826px;
-  background-color: #d9d6d6;
-  border-right: 1px solid #000000;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 326px;
+    height: 826px;
+    background-color: #d9d6d6;
+    border-right: 1px solid #000000;
 }
 
 .sidebar-report{
-  position: fixed;
-  top: 85px;
-  left: 0;
-  width: 310px;
-  height: 826px; 
-  background-color: #d9d6d6;
-  border-right: 1px solid #000000;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 310px;
+    height: 826px; 
+    background-color: #d9d6d6;
+    border-right: 1px solid #000000;
 }
 
 .footer {
@@ -323,7 +323,7 @@ a {
 
     .sidebar {
         display: none;}
-  }
+    }
 
 .filter-header {
     padding: 20px 16px 14px;
@@ -406,55 +406,55 @@ a {
 }
 
 .page-title {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 0,0,6px,0;
-  color: #5a754f;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0,0,6px,0;
+    color: #5a754f;
 }
 
 /* ── FORM SECTIONS ── */
 .form-section {
-  background: #fff;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  padding: 0;
-  /* reset fieldset defaults */
-  border: 1px solid #bbb;
-  min-width: 0;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    padding: 0;
+    /* reset fieldset defaults */
+    border: 1px solid #bbb;
+    min-width: 0;
 }
 
 .form-section-header {
-  display: block;
-  width: 100%;
-  font-size: 13px;
-  font-weight: 700;
-  color: #222;
-  padding: 6px 0px 12px;
-  background: #ebebeb;
-  border-bottom: 1px solid #bbb;
-  border-radius: 6px 6px 0 0;
-  float: left;
-  line-height: normal;
+    display: block;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    padding: 6px 0px 12px;
+    background: #ebebeb;
+    border-bottom: 1px solid #bbb;
+    border-radius: 6px 6px 0 0;
+    float: left;
+    line-height: normal;
 }
 
 /* clearfix so fieldset body clears the floated legend */
 .form-section::after {
-  content: '';
-  display: block;
-  clear: both;
+    content: '';
+    display: block;
+    clear: both;
 }
 
 .form-section  label,
 .form-section  section {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 3px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
 }
 
 
@@ -464,17 +464,17 @@ input[type="time"],
 input[type="date"],
 input[type="number"],
 textarea {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  padding: 6px 10px;
-  font-size: 13px;
-  font-family: inherit;
-  background: #f7f7f7;
-  color: #333;
-  outline: none;
-  margin-top: 3px;
-  box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #f7f7f7;
+    color: #333;
+    outline: none;
+    margin-top: 3px;
+    box-sizing: border-box;
 }
 
 input::placeholder,
@@ -482,13 +482,13 @@ textarea::placeholder { color: #aaa; }
 
 input:focus,
 textarea:focus {
-  border-color: #5a754f;
-  background: #fff;
+    border-color: #5a754f;
+    background: #fff;
 }
 
 textarea {
-  resize: vertical;
-  min-height: 52px;
+    resize: vertical;
+    min-height: 52px;
 }
 
 .input-medium { max-width: 300px; }
@@ -496,11 +496,11 @@ textarea {
 
 /* ── TIME / DATE ROW ── */
 .row-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  max-width: 300px;
-  padding: 0 14px 12px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 300px;
+    padding: 0 14px 12px !important;
 }
 
 .row-2 label {
@@ -514,67 +514,67 @@ textarea {
 
 /* ── PHOTO UPLOAD ── */
 .photo-upload-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  margin: 10px 14px 12px;
-  height: 55px;
-  border: 2px dashed #bbb;
-  border-radius: 6px;
-  background: #f0f0f0;
-  cursor: pointer;
-  color: #888;
-  font-size: 12px;
-  font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 10px 14px 12px;
+    height: 55px;
+    border: 2px dashed #bbb;
+    border-radius: 6px;
+    background: #f0f0f0;
+    cursor: pointer;
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .photo-upload-area:hover {
-  border-color: #5a754f;
-  background: #eaf2e6;
-  color: #5a754f;
+    border-color: #5a754f;
+    background: #eaf2e6;
+    color: #5a754f;
 }
 
 .photo-upload-area i { font-size: 20px; }
 
 .photo-upload-area small {
-  font-size: 11px;
-  color: #aaa;
+    font-size: 11px;
+    color: #aaa;
 }
 
 
 /* ── FORM ACTIONS ── */
 .form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding-bottom: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-bottom: 16px;
 }
 
 .btn-cancel {
-  background: none;
-  border: 1px solid #999;
-  border-radius: 5px;
-  padding: 6px 18px;
-  font-size: 13px;
-  font-family: inherit;
-  color: #444;
-  cursor: pointer;
+    background: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #444;
+    cursor: pointer;
 }
 
 .btn-cancel:hover { background: #eee; }
 
 .btn-submit {
-  background: #5a754f;
-  border: none;
-  border-radius: 5px;
-  padding: 6px 20px;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: inherit;
-  color: #fff;
-  cursor: pointer;
+    background: #5a754f;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff;
+    cursor: pointer;
 }
 
 .btn-submit:hover { background: #4a6241; }
@@ -585,55 +585,55 @@ textarea {
 }
 
 .category-fieldset {
-  border: none;
-  padding: 16px 18px;
-  margin: 0;
+    border: none;
+    padding: 16px 18px;
+    margin: 0;
 }
 
 .category-fieldset legend {
-  font-size: 12px;
-  font-weight: 700;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-  padding: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    padding: 0;
 }
 
 /* ── CATEGORY GRID ── */
 .category-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .cat-btn {
-  width: 100%;
-  background: #c2c0c0;
-  border: 1.5px solid #999;
-  border-radius: 6px;
-  padding: 6px 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  font-size: 9px;
-  font-family: inherit;
-  color: #333;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+    width: 100%;
+    background: #c2c0c0;
+    border: 1.5px solid #999;
+    border-radius: 6px;
+    padding: 6px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 9px;
+    font-family: inherit;
+    color: #333;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .cat-btn i { font-size: 14px; }
 
 .cat-btn:hover,
 .cat-btn.active {
-  background: #5a754f;
-  color: #fff;
-  border-color: #5a754f;
+    background: #5a754f;
+    color: #fff;
+    border-color: #5a754f;
 }
 
 .category-label {
