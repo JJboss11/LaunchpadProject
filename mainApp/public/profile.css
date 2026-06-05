@@ -110,3 +110,11 @@ input,textarea{
   background-color: #d9d6d6;
   border-right: 1px solid #000000;
 }
+
+.btn-delete {
+    background-color: #a63232;
+}
+
+.btn-delete:hover {
+    background-color: #8b2626;
+}
