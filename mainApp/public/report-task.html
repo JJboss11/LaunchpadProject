@@ -1,89 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Report bounty</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report bounty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="report.css">
+  <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">    
-            <link rel="stylesheet" href="stylesheet.css">
-            <link rel="stylesheet" href="report.css">
-            <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        </link>
-    </head>
+<body data-page="home">
 
-    <body data-page="home">
-        <nav class = "nav">
-            <div class="logo-wrap">
-                <div class="logo-inner">
-                    <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
-                    <a href="index.html" class="logo">ChipIn™</a>
-                </div>
-                <p>Every hand makes a difference</p>
-            </div>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="logo-wrap">
+      <div class="logo-inner">
+        <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
+        <a href="index.html" class="logo">ChipIn™</a>
+      </div>
+      <p>Every hand makes a difference</p>
+    </div>
 
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-    
-            <div class="nav-right" id="nav-right">
-                <a href="javascript:history.back()" class="report-btn back-btn">
-                    <span class="report-text">Back</span>
-                </a>            
+    <button class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
 
-                <div class="nav-divider"></div>
+    <div class="nav-right" id="nav-right">
+      <a href="javascript:history.back()" class="report-btn back-btn">
+        <span class="report-text">Back</span>
+      </a>
+      <div class="nav-divider"></div>
+      <div class="nav-icons">
+        <a href="#" class="report-btn" id="signout-btn">
+          <span class="report-text">Sign out</span>
+          <i class="fa fa-sign-out report-plus"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
 
-                <div class="nav-icons">
-                    <a href="#" class="report-btn" id="signout-btn">
-                        <span class="report-text">Sign out</span>
-                        <i class="fa fa-sign-out report-plus"></i>
-                    </a>
-                </div>
-            </div>
-        </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
 
-        <div class="nav-overlay" id="nav-overlay"></div>
+  <!-- Sidebar with categories -->
+  <aside class="sidebar-ReportTask">
 
-        <aside class="sidebar-ReportTask"></aside>
-            <form action="/form" id="myForm" method="post">
-                <fieldset>
+    <div class="category-label">Category</div>
 
-                    <label for= "Firstname" id= "Firstname"></label>
-                    <input type="text" name="Firstname" required id="Firstname">
+    <div class="category-grid">
+      <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
+      <button type="button" class="cat-btn" data-category="Picture"><i class="fa fa-picture-o"></i><span>Picture</span></button>
+      <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
+      <button type="button" class="cat-btn" data-category="Gardening"><i class="fa fa-leaf"></i><span>Gardening</span></button>
+      <button type="button" class="cat-btn" data-category="Report"><i class="fa fa-pencil"></i><span>Report</span></button>
+      <button type="button" class="cat-btn" data-category="Wellbeing"><i class="fa fa-heart"></i><span>Wellbeing</span></button>
+      <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
+      <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
+    </div>
 
-                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
-                    <input type="text" name="lastname" required id="lastname">
+  </aside>
 
-                    <label for="email" id="emailLabel"> </label>
-                    <input type="email" name="email" required id="email">
-                    
-                    <label for="Address" id="AddressLabel"> </label>
-                    <input type="text" name="Address" required id="Address">
+  <!-- Main content -->
+  <main class="main-content">
 
-                    <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
+    <!-- Profile section -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img id="profilePreview">
+        <i class="fa fa-user" id="profileIcon"></i>
+        <label for="profileUpload" class="camera-overlay">
+          <i class="fa fa-camera"></i>
+        </label>
+        <input type="file" id="profileUpload" accept="image/*" style="display:none;">
+      </div>
+      <p class="profile-name">John Smith</p>
+    </div>
 
-                    <p id = "ConfirmMessage"></p>
-                </fieldset>
-            </form>
-        </aside>
-    
-        <div class="task-grid"></div>
+    <!-- User details form -->
+    <form action="/form" id="myForm" method="post">
+      <fieldset>
+        <label for="Firstname">First name</label>
+        <input type="text" name="Firstname" required id="Firstname">
 
-        <div class="profile-section">
-            <div class="profile-pic">
-                <img id="profilePreview">
-                <i class="fa fa-user" id="profileIcon"></i>
-                <label for="profileUpload" class="camera-overlay">
-                <i class="fa fa-camera"></i>
-                </label>
-                <input type="file" id="profileUpload" accept="image/*" style="display:none;">
-            </div>
-            <p class="profile-name">John Smith</p>
-        </div>
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" required id="lastname">
 
-        <script src="/scripts/helpers.js"></script>
-        <script src="scripts/joinapp.js"></script>
-    </body>
+        <label for="email">Email</label>
+        <input type="email" name="email" required id="email">
+
+        <label for="Address">Address</label>
+        <input type="text" name="Address" required id="Address">
+
+        <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
+        <p id="ConfirmMessage"></p>
+      </fieldset>
+    </form>
+
+    <div class="task-grid"></div>
+
+    <!-- Report task form -->
+    <h1 class="page-title">Report a task</h1>
+
+    <form id="reportForm" novalidate>
+
+      <!-- Task details -->
+      <fieldset class="form-section">
+        <legend class="form-section-header">Task details</legend>
+
+        <label for="task-title">Title<span class="req">*</span>
+          <input type="text" id="task-title" class="task-input" name="title" placeholder="Placeholder" required>
+        </label>
+
+        <label for="task-desc">Description
+          <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
+        </label>
+      </fieldset>
+
+      <!-- Location and Time -->
+      <fieldset class="form-section">
+        <legend class="form-section-header">Location and Time</legend>
+
+        <section class="row-2">
+          <label for="task-address">Address
+            <input type="text" id="task-address" class="task-input input-medium" name="address" placeholder="Street address" required>
+          </label>
+
+          <label for="task-time">Time
+            <input type="time" id="task-time" class="task-time" name="time" placeholder="HH:MM" required>
+          </label>
+
+          <label for="task-date">Date
+            <input type="date" id="task-date" name="date" placeholder="DD/MM/YY">
+          </label>
+        </section>
+      </fieldset>
+
+      <!-- Volunteers needed -->
+      <fieldset class="form-section">
+        <legend class="form-section-header">Volunteers needed</legend>
+        <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
+          <input type="number" id="task-volunteers" class="task-volunteers input-small" name="volunteers" placeholder="Max 15" min="1" max="15" required>
+        </label>
+      </fieldset>
+
+      <!-- Photo -->
+      <fieldset class="form-section">
+        <legend class="form-section-header">Photo</legend>
+        <label for="task-photo" class="photo-upload-area">
+          <i class="fa fa-camera" aria-hidden="true"></i>
+          <span>Click to upload a photo of the issue</span>
+          <small>JPG or PNG max 10MB</small>
+          <input type="file" id="task-photo" name="photo" accept="image/jpeg,image/png" class="sr-only">
+        </label>
+      </fieldset>
+
+      <!-- Actions -->
+      <footer class="form-actions">
+        <button type="reset" class="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-submit">Submit</button>
+      </footer>
+
+    </form>
+
+  </main>
+
+  <script src="/scripts/helpers.js"></script>
+  <script src="scripts/joinapp.js"></script>
+</body>
 </html>

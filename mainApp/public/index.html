@@ -1,70 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home page</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home page</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="stylesheet.css">
-        <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <script src="scripts/apps.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="scripts/apps.js"></script>
 
-    </head>
+</head>
 
-    <body data-page="home">
+<body data-page="home">
 
-        <nav class="nav">
-            <div class="logo-wrap">
-                <div class="logo-inner">
-                    <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
-                    <a href="index.html" class="logo">ChipIn™</a>
-                </div>
-                <p>Every hand makes a difference</p>
-            </div>
+    <nav class = "nav">
+        <a href="index.html" class="logo">Launchpad</a>
+        
+        <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="login.html">login</a></li>
+            <li><a href="signup.html" class="btn">Join Now</a></li>
+        </ul>
 
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <div class="nav-right" id="nav-right">
-                <a href="#" class="report-btn">
-                    <span class="report-text">Profile</span>
-                    <i class="fa-solid fa-user report-plus"></i>
-                </a>
-
-                <div class="nav-divider"></div>
-
-                <a href="report-task.html" class="report-btn">
-                    <span class="report-text">Report Task</span>
-                    <i class="fa fa-plus report-plus"></i>
-                </a>
-
-                <div class="nav-divider"></div>
-
-                <a href="#" class="report-btn" id="signout-btn">
-                    <span class="report-text">Sign out</span>
-                    <i class="fa fa-sign-out report-plus"></i>
-                </a>
-            </div>
-        </nav>
-
-        <div class="nav-overlay" id="nav-overlay"></div>
-            
-        <aside class="sidebar">
-
-        <div class="task-grid">
-            <section class="bottom" id="bottom">        
-            </section>
-    
-            <footer class="footer" id="footer">
-                <section>
-                </section>
-            </footer>
+        <div class="nav-icons">
+            <i class="fa fa-comment"></i>
+            <i class="fa fa-bell"></i>
+            <i class="fa fa-search"></i>
+            <a href="profile.html"> <i class="fa fa-user" id="profileIcon"></i></a>
         </div>
-        <script src="/scripts/helpers.js"></script>
-        <script src="/scripts/joinapp.js"></script>
-    </body>
+            
+        <a href="report-task.html" class="btn">Report Task</a>
+      </div>
+    </nav>
+        
+    <div class="header"></div>
+
+    <aside class="sidebar">
+
+    <form id="openForm" method="post">
+
+    <h3 id="first-title">Status</h3>
+
+    <label for = "open" id="openLabel"> Open</label>
+    <label><input type="checkbox" id="open" name="open"></label>
+
+    <label for = "closed" id="closedLabel"> Closed</label>
+    <label><input type="checkbox" id="closed" name="closed"></label>
+     
+    <label for = "Progress" id="ProgressLabel"> In Progress</label>
+    <label><input type="checkbox" id="Progress" name="Progress"></label>
+     
+    <label for = "urgent" id="urgentLabel"> Urgent</label>
+    <label><input type="checkbox" id="urgent" name="urgent"></label>
+
+    </form>
+
+    <form id ="categoriesForm" method="post">
+
+    <h3 id="title">Categories</h3>
+        
+    <label for = "repair" id="repairLabel"> Repair</label>
+    <label><input type="checkbox" id="repair" name="repair"></label>
+
+    <label for = "education" id="educationLabel"> Education</label>
+    <label><input type="checkbox" id="education" name="education"></label>
+     
+    <label for = "leisure" id="leisureLabel"> In Progress</label>
+    <label><input type="checkbox" id="leisure" name="leisure"></label>
+   
+    </form>
+
+    <form id="volunteersForm" method="post">
+
+    <h3 id="title">Volunteers needed</h3>
+        
+    <label for = "1person" id="1personLabel">1 person needed</label>
+    <label><input type="checkbox" id="1person" name="1person"></label>
+
+    <label for = "4person" id="4personLabel">2-4 people needed</label>
+    <label><input type="checkbox" id="4person" name="4person"></label>
+     
+    <label for = "5person" id="5personLabel">5+ people needed</label>
+    <label><input type="checkbox" id="5person" name="5person"></label>
+   
+    </form>
+
+    </aside>
+
+<main class="main-content">
+
+    <section class="welcome-banner">
+        <!-- JSON inserts welcome text -->
+    </section>
+
+    <section class="task-controls">
+        <!-- search + sort controls -->
+    </section>
+
+ <section class="task-grid">
+
+    <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+        <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+        <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+            <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+        <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+    <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+           <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+    <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+    
+    <article class="task-card">
+        <div class="task-image">
+            <img src="assests/Placeholder.png" alt="">
+        </div>
+
+        <div class="task-content">
+            <h3 class="task-title">Task title</h3>
+            <p class="task-description">
+                Task description loaded from JSON...
+            </p>
+        </div>
+
+        <div class="task-meta">
+        </div>
+    </article>
+
+</section>
+
+
+
+    <section class="pagination-container">
+        <!-- pagination -->
+    </section>
+
+</main>
+
+<footer class="footer">
+
+</footer>
+    
+</body>
 </html>

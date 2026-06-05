@@ -100,3 +100,13 @@ input,textarea{
     cursor: pointer;
     font-size: 12px;
 }
+
+.sidebar-Profile {
+  position: fixed;
+  top: 85px;
+  left: 0;
+  width: 326px;
+  height: 826px; 
+  background-color: #d9d6d6;
+  border-right: 1px solid #000000;
+}
