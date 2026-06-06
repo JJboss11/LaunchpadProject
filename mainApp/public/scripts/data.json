@@ -26,7 +26,7 @@
       "lastname": "Last Name",
       "email": "Email",
       "Address": "Address",
-      "ConfirmMessage": "changes have been made Thank you!.",
+      "ConfirmMessage": "Changes have been made Thank you!.",
       "ErrorMessage": "Something went wrong, please try again."
     }
   ]
