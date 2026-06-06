@@ -1,12 +1,14 @@
+/* ── BODY ── */
 body {
     background-image: url("./assets/Birmingham.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    margin: 0%;
+    margin: 0;
 }
 
+/* ── LAYOUT ── */
 main {
     display: flex;
     justify-content: center;
@@ -16,11 +18,12 @@ main {
     box-sizing: border-box;
 }
 
+/* ── FORM ── */
 form {
     width: 500px;
     margin: 0;
     padding: 25px 30px;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     border-radius: 16px;
     box-sizing: border-box;
     border: none;
@@ -43,7 +46,9 @@ label {
     color: #5a754f;
 }
 
-input, textarea {
+/* ── INPUTS ── */
+input,
+textarea {
     display: block;
     width: 100%;
     padding: 10px 14px;
@@ -60,15 +65,15 @@ input, textarea {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-color: #5a754f;
     box-shadow: 0 0 0 3px rgba(90, 117, 79, 0.15);
     background-color: #ffffff;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: #a0b89a;
     font-style: italic;
 }
@@ -79,60 +84,7 @@ input.input-error {
     background-color: #fff8f8;
 }
 
-.btn {
-    margin-top: 30px ;
-    margin-bottom: 15px !important;
-    width: 90%;
-    max-width: 200px;
-    color: #ffffff;
-    background-color: #5a754f;
-    padding: 6px 10px;
-    font-weight: 550;
-    font-size: 16px;
-    border: 0px solid #ffffff;
-    border-radius: 7px;
-    text-transform: uppercase;
-    cursor: pointer;
-    display: block;
-    margin: 30px auto 0;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn:hover {
-    background-color: #4a6240;
-    transform: scale(1.03);
-}
-
-.btn:active {
-    transform: scale(0.98);
-}
-
-.loginlink {
-    color: #5a754f;
-}
-
-.reportForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.sidebar-ReportTask form {
-    width: 100%;
-    background: none;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-}
-
-label {
-    display: block;
-    color: #5a754f;
-}
-
+/* ── SHOW PASSWORD ── */
 .show-password-wrapper {
     display: flex;
     align-items: center;
@@ -148,4 +100,36 @@ label {
 
 .show-password-wrapper label {
     display: inline;
+}
+
+/* ── SUBMIT BUTTON ── */
+.btn {
+    width: 90%;
+    max-width: 200px;
+    color: #ffffff;
+    background-color: #5a754f;
+    padding: 6px 10px;
+    font-weight: 550;
+    font-size: 16px;
+    border: none;
+    border-radius: 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 15px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+    background-color: #4a6240;
+    transform: scale(1.03);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ── LINK ── */
+.loginlink {
+    color: #5a754f;
 }

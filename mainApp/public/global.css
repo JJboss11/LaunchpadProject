@@ -208,3 +208,19 @@ a {
         opacity: 1;
     }
 }
+
+/* ── NAV STATS (login/signup pages) ── */
+.nav-stats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0.8;
+    color: #ffffff;
+    margin-left: auto;
+}
+
+.nav-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
