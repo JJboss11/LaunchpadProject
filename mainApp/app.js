@@ -56,6 +56,24 @@ app.listen(port, () => {
 
 const JWT_SECRET = process.env.JWT_TOKEN; 
 
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({success: false, message: 'No token provided.'});
+    }
+    jwt.verify(token, JWT_SECRET, (err, payload) => {
+        if (err) {
+            return res.status(403).json({success: false, message: 'Invalid or expired token'})
+        }
+        req.user = payload;
+        next()
+    });
+    
+}
+
+
 //signup
 app.post('/signup', async (req, res) => {
     const { firstname, lastname, email, password, Address } = req.body;
@@ -96,4 +114,26 @@ app.post('/login', async (req, res) => {
         console.error(err);
         res.status(500).json({ success: false, message: 'Server error.' });
     }
+});
+
+//==================================Profile===============================
+
+app.get('/profile', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT firstname, lastname, email FROM users WHERE id = $1', 
+            [req.user.id]
+        );
+
+        if (result.rows.lenght === 0) {
+            return res.status(404).json({ success: false, message: 'User not found.'})
+        }
+
+        res.json({ success: true, user: result.rows[0] });
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Server error."});
+
+    }
+    
 });
