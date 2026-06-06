@@ -1,82 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>profile</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">    
-            <link rel="stylesheet" href="stylesheet.css">
-            <link rel="stylesheet" href="profile.css">
-            <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        </link>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 
 <body data-page="home">
-        <nav class = "nav">
-            <div class="logo-wrap">
-                <div class="logo-inner">
-                    <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
-                    <a href="index.html" class="logo">ChipIn™</a>
-                </div>
-                <p>Every hand makes a difference</p>
-            </div>
 
-            <div class="nav-stats">
-                <span class="nav-stat">
-                    <i class="fa-solid fa-user"></i>
-                    <span id="stat-users">-</span>
-                </span>
-                <span class="nav-stat">
-                    <i class="fa-solid fa-hand-holding-heart"></i>
-                    <span id="stat-jobs">-</span>
-                </span>
-            </div>
-        </nav>
+<nav class="nav">
+    <div class="logo-wrap">
+        <div class="logo-inner">
+            <img src="/assets/logo2.ico" alt="ChipIn logo" class="logo-favicon">
+            <a href="index.html" class="logo">ChipIn™</a>
+        </div>
+        <p>Every hand makes a difference</p>
+    </div>
+
+    <div class="nav-right">
+
+        <a href="profile.html" class="report-btn active-page">
+            <span class="report-text">Profile</span>
+            <i class="fa-solid fa-user report-plus"></i>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="report-task.html" class="report-btn">
+            <span class="report-text">Report Task</span>
+            <i class="fa-solid fa-plus report-plus"></i>
+        </a>
+
+        <div class="nav-divider"></div>
+
+        <a href="#" class="report-btn">
+            <span class="report-text">Sign Out</span>
+            <i class="fa-solid fa-right-from-bracket report-plus"></i>
+        </a>
+
+    </div>
+</nav>
+
+<div class="profile-layout">
 
     <aside class="sidebar-ReportTask">
 
-            <form action="/form" id="myForm" method="post">
-                <fieldset>
+        <div class="profile-section">
 
-                    <label for= "firstname" id= "firstnameLabel"></label>
-                    <input type="text" name="firstname" required id="firstname">
+            <div class="profile-pic">
+                <img id="profilePreview">
 
-                    <label for="lastname" id="lastnameLabel" maxlength ="20"></label>
-                    <input type="text" name="lastname" required id="lastname">
+                <i class="fa fa-user" id="profileIcon"></i>
 
-                    <label for="email" id="emailLabel"></label>
-                    <input type="email" name="email" required id="email">
-                    
-                    <label for="Address" id="AddressLabel"></label>
-                    <input type="text" name="Address" required id="Address">
+                <label for="profileUpload" class="camera-overlay">
+                    <i class="fa fa-camera"></i>
+                </label>
 
-                    <input type="submit" id="SaveChanges" value="Save Changes" class="btn">
+                <input type="file"
+                       id="profileUpload"
+                       accept="image/*"
+                       style="display:none;">
+            </div>
 
-                    <p id = "ConfirmMessage"></p>
+            <p class="profile-name">John Smith</p>
+            <p class="profile-role">
+                Community Contributor
+            </p>
 
-                   
-                </fieldset>
-            </form>
-            <button type="submit" class="btn btn-delete">Delete account</button>
-        </aside>
-  
-    <div class="task-profile"></div>
+        </div>
 
-    <div class="profile-section">
-    <div class="profile-pic">
-        <img id="profilePreview">
-        <i class="fa fa-user" id="profileIcon"></i>
-        <label for="profileUpload" class="camera-overlay">
-        <i class="fa fa-camera"></i>
-        </label>
-        <input type="file" id="profileUpload" accept="image/*" style="display:none;">
-    </div>
-        <p class="profile-name">John Smith</p>
-    </div>
+        <form action="/form" id="myForm" method="post">
+
+            <fieldset>
+
+                <label for="firstname" id="firstnameLabel"></label>
+                <input type="text" name="firstname" required id="firstname">
+
+                <label for="lastname" id="lastnameLabel" maxlength="20"></label>
+                <input type="text" name="lastname" required id="lastname">
+
+                <label for="email" id="emailLabel"></label>
+                <input type="email" name="email" required id="email">
+
+                <label for="Address" id="AddressLabel"></label>
+                <input type="text" name="Address" required id="Address">
+
+                <input type="submit"
+                       id="SaveChanges"
+                       value="Save Changes"
+                       class="btn">
+
+                <p id="ConfirmMessage"></p>
+
+            </fieldset>
+
+        </form>
+
+        <button type="submit" class="btn btn-delete">
+            Delete account
+        </button>
+
+    </aside>
+
+    <main class="profile-main">
+
+        <section class="profile-banner">
+            <h1>Welcome back, John! 👋</h1>
+            <p>Here's an overview of your community impact.</p>
+        </section>
+
+        <section class="stats-container">
+
+            <div class="stat-card">
+                <h2>34</h2>
+                <span>Completed Tasks</span>
+            </div>
+
+            <div class="stat-card">
+                <h2>156</h2>
+                <span>Active Tasks</span>
+            </div>
+
+            <div class="stat-card">
+                <h2>528</h2>
+                <span>Volunteers Helped</span>
+            </div>
+
+        </section>
+
+        <section class="dashboard-section">
+
+            <h2 class="dashboard-title">
+                <i class="fa-solid fa-check-circle"></i>
+                Completed Tasks
+            </h2>
+
+            <div class="dashboard-card">
+                <h3>Garden Fence Repair</h3>
+                <p>
+                    Helped an elderly resident repair a damaged
+                    garden fence after heavy winds.
+                </p>
+
+                <span class="card-status completed">
+            Completed 2 days ago
+        </span>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Shopping Assistance</h3>
+                <p>
+                    Collected groceries and delivered essential
+                    supplies to a local family.
+                </p>
+
+                <span class="card-status completed">
+            Completed last week
+        </span>
+            </div>
+
+        </section>
+
+        <section class="dashboard-section">
+
+            <h2 class="dashboard-title">
+                <i class="fa-solid fa-heart"></i>
+                Active Tasks
+            </h2>
+
+            <div class="dashboard-card">
+                <h3>Community Clean-up</h3>
+                <p>
+                    Volunteers needed for this Saturday's
+                    neighbourhood clean-up event.
+                </p>
+
+                <span class="card-status active">
+            Scheduled for Saturday
+        </span>
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
-</body>
+
 <script src="./scripts/joinapp.js"></script>
+
+</body>
 </html>

@@ -42,11 +42,11 @@ input,textarea{
 
 .btn{
     margin-top: 30px ;
-    width: 90%;
-    max-width: 200px;
+    width: 100%;
+    max-width: none;
     color: #ffffff;
     background-color: #5a754f;
-    padding: 6px 10px;
+    padding: 14px;
     font-weight: 550;
     font-size: 16px;
     border: 0px solid #ffffff;
@@ -56,7 +56,6 @@ input,textarea{
     display: block;
     margin: 30px auto 0;
     transition: background-color 0.2s ease, transform 0.1s ease;
-
 }
 
 .btn:hover {
@@ -77,7 +76,7 @@ input,textarea{
     width: 100%;
     background: none;
     border-radius: 0;
-    padding-top: 180px;
+    padding-top: 8px;
     box-shadow: none;
 }
 
@@ -112,19 +111,25 @@ input,textarea{
     font-size: 12px;
 }
 
-.sidebar-Profile {
-  position: fixed;
-  top: 85px;
-  left: 0;
-  width: 326px;
-  height: 826px; 
-  background-color: #d9d6d6;
-  border-right: 1px solid #000000;
+.sidebar-ReportTask {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 326px;
+    height: calc(100vh - 85px);
+    overflow-y: auto;
+    background-color: #f7f5f5;
+    border-right: 1px solid #e3e3e3;
+    padding: 0 22px;
+    box-sizing: border-box;
 }
 
-.btn-delete {
+.btn-delete{
+    width: calc(100% - 44px);
+    margin: 18px auto 20px;
+    padding: 10px;
     background-color: #a63232;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-sizing: border-box;
 }
 
 .btn-delete:hover {
@@ -134,4 +139,163 @@ input,textarea{
 
 .btn-delete:active {
     transform: scale(0.98);
+}
+
+/* page layout */
+
+.profile-layout{
+    display:flex;
+    margin-top:85px;
+    min-height:calc(100vh - 85px);
+    background:#f8f8f8;
+}
+
+.profile-main{
+    flex:1;
+    padding:40px;
+    margin-left:326px;
+}
+
+.profile-banner{
+    margin-bottom:35px;
+}
+
+.profile-banner h1{
+    margin:0;
+    font-size:42px;
+    font-weight:700;
+    color:#222;
+    text-align:left;
+}
+
+.profile-banner p{
+    margin-top:8px;
+    color:#777;
+    font-size:18px;
+}
+
+.stats-container{
+    display:flex;
+    gap:24px;
+    margin-bottom:40px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    min-width:180px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.stat-card h2{
+    margin:0;
+    font-size:40px;
+    color:#222;
+}
+
+.stat-card span{
+    color:#666;
+    font-size:15px;
+}
+
+.profile-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:35px 0 28px;
+    border-bottom:1px solid #dddddd;
+    margin-bottom:30px;
+}
+
+.profile-pic{
+    width:110px;
+    height:110px;
+    left:0;
+    font-size:42px;
+}
+
+.profile-name{
+    margin-top:16px;
+    font-size:22px;
+    font-weight:600;
+    color:#333;
+}
+
+/* dashboard */
+
+.dashboard-section{
+    margin-top:45px;
+}
+
+.dashboard-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:28px;
+    color:#222;
+    margin-bottom:22px;
+}
+
+.dashboard-title i{
+    color:#5a754f;
+}
+
+.dashboard-card{
+    background:white;
+    border-radius:18px;
+    padding:24px 28px;
+    margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+    transition:transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.dashboard-card h3{
+    margin:0 0 10px;
+    font-size:22px;
+    color:#222;
+}
+
+.dashboard-card p{
+    margin:0;
+    color:#666;
+    line-height:1.6;
+}
+
+.card-status{
+    display:inline-block;
+    margin-top:18px;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.card-status.completed{
+    background:#eaf5e6;
+    color:#5a754f;
+}
+
+.card-status.active{
+    background:#f5efe2;
+    color:#b8842c;
+}
+
+.profile-role{
+    margin-top:-8px;
+    color:#6f8b65;
+    font-size:16px;
+    font-weight:500;
+}
+
+.profile-section{
+    border-bottom:1px solid #d8d8d8;
+    padding-bottom:28px;
 }
