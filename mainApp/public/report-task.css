@@ -111,12 +111,17 @@
 
 .form-section-header {
     display: block;
-    width: 100%;
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    margin-top: -1px;
+
     font-size: 13px;
     font-weight: 700;
     color: #222;
-    padding: 7px 10px;
+    padding: 10px 14px;
     background: #ebebeb;
+
+    border: 1px solid #bbb;
     border-bottom: 1px solid #bbb;
     border-radius: 6px 6px 0 0;
     box-sizing: border-box;
