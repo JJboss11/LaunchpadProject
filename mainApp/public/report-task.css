@@ -279,6 +279,7 @@ textarea {
         border-right: none;
         border-bottom: 1px solid #ddd;
         padding: 16px;
+        margin-top: 85px;
     }
 
     .category-grid {
