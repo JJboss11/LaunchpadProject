@@ -6,7 +6,8 @@
         <title>Report task</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
             <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">    
-            <link rel="stylesheet" href="stylesheet.css">
+            <link rel="stylesheet" href="global.css">
+            <link rel="stylesheet" href="report-task.css">
             <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         </link>
@@ -45,102 +46,87 @@
 
         <div class="nav-overlay" id="nav-overlay"></div>
 
-<aside class="sidebar-report">
+        <aside class="sidebar-report">
+            <div class="category-label">
+                Category
+            </div>
 
-    <div class="category-label">
-        Category
-    </div>
+            <div class="category-grid">
+                <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
+                <button type="button" class="cat-btn" data-category="Picture"><i class="fa fa-picture-o"></i><span>Picture</span></button>
+                <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
+                <button type="button" class="cat-btn" data-category="Gardening"><i class="fa fa-leaf"></i><span>Gardening</span></button>
+                <button type="button" class="cat-btn" data-category="Report"><i class="fa fa-pencil"></i><span>Report</span></button>
+                <button type="button" class="cat-btn" data-category="Wellbeing"><i class="fa fa-heart"></i><span>Wellbeing</span></button>
+                <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
+                <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
+            </div>
+        </aside>
 
+        <main class="main-content">
+            <h1 class="page-title">Report a task</h1>
 
-    <div class="category-grid">
+            <form id="reportForm" novalidate>
 
-        <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
-        <button type="button" class="cat-btn" data-category="Picture"><i class="fa fa-picture-o"></i><span>Picture</span></button>
-        <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
-        <button type="button" class="cat-btn" data-category="Gardening"><i class="fa fa-leaf"></i><span>Gardening</span></button>
-        <button type="button" class="cat-btn" data-category="Report"><i class="fa fa-pencil"></i><span>Report</span></button>
-        <button type="button" class="cat-btn" data-category="Wellbeing"><i class="fa fa-heart"></i><span>Wellbeing</span></button>
-        <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
-        <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
+                <!-- Task details -->
+                <fieldset class="form-section">
+                    <legend class="form-section-header">Task details</legend>
 
-    </div>
+                    <label for="task-title">Title<span class="req">*</span>
+                        <input type="text" class ="task-input" name="title" placeholder="Placeholder" required>
+                    </label>
 
-</aside>
+                    <label for="task-desc">Description>
+                        <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
+                    </label>
+                </fieldset>
 
+                <!-- Location and Time -->
+                <fieldset class="form-section">
+                    <legend class="form-section-header">Location and Time</legend>
+                    <section class="row-2">
+                        <label for="task-address">Address
+                            <input type="text" class="task-input" name="address" placeholder="Street address" class="input-medium" required>
+                        </label>
 
+                        <label for="task-time">Time
+                            <input type="time" class="task-time" name="time" placeholder="HH:MM" required>
+                        </label>
 
-  <main class="main-content">
-  <h1 class="page-title">Report a task</h1>
+                        <label for="task-date">Date
+                            <input type="date" id="task-date" name="date" placeholder="DD/MM/YY">
+                        </label>
+                    </section>
+                </fieldset>
 
-  <form id="reportForm" novalidate>
+                <!-- Volunteers needed -->
+                <fieldset class="form-section">
+                    <legend class="form-section-header">Volunteers needed</legend>
+                    <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
+                        <input type="number" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" class="input-small" required>
+                    </label>
+                </fieldset>
 
-    <!-- Task details -->
-    <fieldset class="form-section">
-      <legend class="form-section-header">Task details</legend>
+                <!-- Photo -->
+                <fieldset class="form-section">    
+                    <legend class="form-section-header">Photo</legend>
 
-      <label for="task-title">Title<span class="req">*</span>
-        <input type="text" class ="task-input" name="title" placeholder="Placeholder" required>
-      </label>
+                    <label for="task-photo" class="photo-upload-area">
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                        <span>Click to upload a photo of the issue</span>
+                        <small>JPG or PNG max 10MB</small>
+                        <input type="file" id="task-photo" name="photo" accept="image/jpeg,image/png" class="sr-only">
+                    </label>
+                </fieldset>
 
-      <label for="task-desc">Description>
-        <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
-      </label>
+                <!-- Actions -->
+                <footer class="form-actions"> 
+                    <button type="reset" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-submit">Submit</button>
+                </footer>
 
-    </fieldset>
-
-    <!-- Location and Time -->
-    <fieldset class="form-section">
-      <legend class="form-section-header">Location and Time</legend>
-
-       <section class="row-2">
-      <label for="task-address">Address
-        <input type="text" class="task-input" name="address" placeholder="Street address" class="input-medium" required>
-        </label>
-
-        <label for="task-time">Time
-          <input type="time" class="task-time" name="time" placeholder="HH:MM" required>
-        </label>
-
-        <label for="task-date">Date
-          <input type="date" id="task-date" name="date" placeholder="DD/MM/YY">
-        </label>
-
-      </section>
-    </fieldset>
-
-    <!-- Volunteers needed -->
-    <fieldset class="form-section">
-      <legend class="form-section-header">Volunteers needed</legend>
-      <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
-        <input type="number" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" class="input-small" required>
-      </label>
-    </fieldset>
-
-    <!-- Photo -->
-    <fieldset class="form-section">
-        
-      <legend class="form-section-header">Photo</legend>
-
-      <label for="task-photo" class="photo-upload-area">
-        <i class="fa fa-camera" aria-hidden="true"></i>
-        <span>Click to upload a photo of the issue</span>
-        <small>JPG or PNG max 10MB</small>
-        <input type="file" id="task-photo" name="photo" accept="image/jpeg,image/png" class="sr-only">
-      </label>
-
-    </fieldset>
-
-    <!-- Actions -->
-    <footer class="form-actions"> 
-      <button type="reset" class="btn-cancel">Cancel</button>
-      <button type="submit" class="btn-submit">Submit</button>
-    </footer>
-
-  </form>
-</main>
-
-
-</body>
-
-<script src="./scripts/helpers.js"></script>
+            </form>
+        </main>
+    </body>
+    <script src="./scripts/helpers.js"></script>
 </html>

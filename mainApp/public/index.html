@@ -7,7 +7,8 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="index.css">
         <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="scripts/apps.js"></script>
@@ -15,7 +16,6 @@
     </head>
 
     <body data-page="home">
-
         <nav class="nav">
             <div class="logo-wrap">
                 <div class="logo-inner">
@@ -32,7 +32,7 @@
             <div class="nav-right" id="nav-right">
 
                 <a href="profile.html" href="#" class="report-btn">
-                 <span class="report-text">Profile</span>
+                    <span class="report-text">Profile</span>
                     <i class="fa-solid fa-user report-plus"></i>
                 </a>
 
@@ -52,234 +52,146 @@
             </div>
         </nav>
 
-        <div class="nav-overlay" id="nav-overlay"></div>
-            
+        <div class="nav-overlay" id="nav-overlay"></div>  
+        <div class="header"></div>
 
+        <aside class="sidebar">
+            <div class="filter-header">
+                <span>Filter By</span>
+            </div>
 
-        
-    <div class="header"></div>
+            <form id="openForm" method="post">
+                <h3 id="first-title">Status</h3>
+                <label for="open">
+                    <input type="checkbox" id="open" name="open">
+                    Open
+                </label>
+                <label for="closed">
+                    <input type="checkbox" id="closed" name="closed">
+                    Closed
+                </label>
+                <label for="Progress">
+                    <input type="checkbox" id="Progress" name="Progress">
+                    In Progress
+                </label>
+                <label for="urgent">
+                    <input type="checkbox" id="urgent" name="urgent">
+                    Urgent
+                </label>
+            </form>
 
-    <aside class="sidebar">
+            <form id ="categoriesForm" method="post">
+                <h3 id="title">Categories</h3>
+                <label for="repair">
+                    <input type="checkbox" id="repair" name="repair">
+                    Repair
+                </label>
+                <label for="education">
+                    <input type="checkbox" id="education" name="education">
+                    Education
+                </label>
+                <label for="leisure">
+                    <input type="checkbox" id="leisure" name="leisure">
+                    Leisure
+                </label>
+            </form>
 
-    <form id="openForm" method="post">
+            <form id="volunteersForm" method="post">
+                <h3 id="title">Volunteers needed</h3>
+                <label for="1person">
+                    <input type="checkbox" id="1person" name="1person">
+                    1 person needed
+                </label>
+                <label for="4person">
+                    <input type="checkbox" id="4person" name="4person">
+                    2-4 people needed
+                </label>
+                <label for="5person">
+                    <input type="checkbox" id="5person" name="5person">
+                    5+ people needed
+                </label>
+            </form>
+        </aside>
 
-    <h3 id="first-title">Status</h3>
+        <main class="main-content">
+            <section class="welcome-banner">
+                <!-- JSON inserts welcome text -->
+            </section>
 
-    <label for = "open" id="openLabel"> Open</label>
-    <label><input type="checkbox" id="open" name="open"></label>
+            <section class="task-controls">
+                <div class="search-area">
+                    <input type="text" placeholder="Search tasks...">
+                </div>
 
-    <label for = "closed" id="closedLabel"> Closed</label>
-    <label><input type="checkbox" id="closed" name="closed"></label>
-     
-    <label for = "Progress" id="ProgressLabel"> In Progress</label>
-    <label><input type="checkbox" id="Progress" name="Progress"></label>
-     
-    <label for = "urgent" id="urgentLabel"> Urgent</label>
-    <label><input type="checkbox" id="urgent" name="urgent"></label>
+                <div class="sort-area">
+                    <span>Sort by:</span>
+                    <select>
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                    </select>
+                </div>
 
-    </form>
+            </section>
 
-    <form id ="categoriesForm" method="post">
+            <section class="task-grid">
 
-    <h3 id="title">Categories</h3>
-        
-    <label for = "repair" id="repairLabel"> Repair</label>
-    <label><input type="checkbox" id="repair" name="repair"></label>
+                <article class="task-card">
+                    <div class="task-image">
+                        <img src="assets/Placeholder.png" alt="">
+                    </div>
 
-    <label for = "education" id="educationLabel"> Education</label>
-    <label><input type="checkbox" id="education" name="education"></label>
-     
-    <label for = "leisure" id="leisureLabel"> In Progress</label>
-    <label><input type="checkbox" id="leisure" name="leisure"></label>
-   
-    </form>
+                    <div class="task-content">
+                        <h3 class="task-title">Task title</h3>
+                        <p class="task-description">
+                            Task description loaded from Database
+                        </p>
+                    </div>
 
-    <form id="volunteersForm" method="post">
+                    <div class="task-meta"></div>
+                </article>
 
-    <h3 id="title">Volunteers needed</h3>
-        
-    <label for = "1person" id="1personLabel">1 person needed</label>
-    <label><input type="checkbox" id="1person" name="1person"></label>
+                <article class="task-card">
+                    <div class="task-image">
+                        <img src="assets/Placeholder.png" alt="">
+                    </div>
 
-    <label for = "4person" id="4personLabel">2-4 people needed</label>
-    <label><input type="checkbox" id="4person" name="4person"></label>
-     
-    <label for = "5person" id="5personLabel">5+ people needed</label>
-    <label><input type="checkbox" id="5person" name="5person"></label>
-   
-    </form>
+                    <div class="task-content">
+                        <h3 class="task-title">Task title</h3>
+                        <p class="task-description">
+                            Task description loaded from Database
+                        </p>
+                    </div>
 
-    </aside>
+                    <div class="task-meta"></div>
+                </article>
 
-<main class="main-content">
+                <article class="task-card">
+                    <div class="task-image">
+                        <img src="assets/Placeholder.png" alt="">
+                    </div>
 
-    <section class="welcome-banner">
-        <!-- JSON inserts welcome text -->
-    </section>
+                    <div class="task-content">
+                        <h3 class="task-title">Task title</h3>
+                        <p class="task-description">
+                            Task description loaded from Database
+                        </p>
+                    </div>
 
-    <section class="task-controls">
-        <!-- search + sort controls -->
-    </section>
-
- <section class="task-grid">
-
-    <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-        <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-        <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-            <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-        <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-    <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-           <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-    <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-    
-    <article class="task-card">
-        <div class="task-image">
-            <img src="assets/Placeholder.png" alt="">
-        </div>
-
-        <div class="task-content">
-            <h3 class="task-title">Task title</h3>
-            <p class="task-description">
-                Task description loaded from Database
-            </p>
-        </div>
-
-        <div class="task-meta">
-        </div>
-    </article>
-
-</section>
+                    <div class="task-meta">
+                    </div>
+                </article>
+            </section>
 
 
 
-    <section class="pagination-container">
-        <!-- pagination -->
-    </section>
+            <section class="pagination-container">
+                <div class="results-count">
+                    Showing 45 results
+                </div>
+            </section>
 
-</main>
-
-</footer>  
-</body>
-
-<script src="./scripts/helpers.js"></script>
+        </main>    
+    </body>
+    <script src="./scripts/helpers.js"></script>
+    <script src="./scripts/joinapp.js"></script>
 </html>
