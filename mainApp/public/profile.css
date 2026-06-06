@@ -179,7 +179,6 @@ input,textarea{
     border-radius:18px;
     padding:28px;
     min-width:180px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
 }
 
 .stat-card h2{
@@ -239,14 +238,11 @@ input,textarea{
     border-radius:18px;
     padding:24px 28px;
     margin-bottom:18px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
     transition:transform .2s ease,
-    box-shadow .2s ease;
 }
 
 .dashboard-card:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .dashboard-card h3{
