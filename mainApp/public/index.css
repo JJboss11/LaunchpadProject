@@ -12,7 +12,6 @@
     box-sizing: border-box;
 }
 
-/* ── SIDEBAR ── */
 .sidebar {
     position: fixed;
     top: 85px;
@@ -94,7 +93,6 @@
     padding-top: 0;
 }
 
-/* ── WELCOME BANNER ── */
 .welcome-banner {
     background: #ffffff;
     border-bottom: 1px solid #cfcfcf;
@@ -241,7 +239,6 @@
     color: #777;
 }
 
-/* ── PAGINATION ── */
 .pagination-container {
     margin-top: 10px;
     background: #fafafa;

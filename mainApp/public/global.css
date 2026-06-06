@@ -2,7 +2,6 @@ body {
     font-family: 'Lexend', sans-serif;
 }
 
-/* ── NAV ── */
 .nav {
     position: fixed;
     left: 0;
@@ -134,7 +133,6 @@ a {
     display: block;
 }
 
-/* ── TOAST ── */
 #ConfirmMessage {
     position: fixed;
     bottom: 30px;
@@ -209,7 +207,6 @@ a {
     }
 }
 
-/* ── NAV STATS (login/signup pages) ── */
 .nav-stats {
     display: flex;
     align-items: center;

@@ -7,8 +7,6 @@ form{
     box-sizing: border-box;
     border: none;
     transition: background-color 0.2s ease, transform 0.1s ease;
-
-
 }
 
 fieldset{
@@ -71,7 +69,6 @@ input,textarea{
     color: #5a754f;
 }
 
-
 .sidebar-ReportTask form {
     width: 100%;
     background: none;
@@ -94,7 +91,6 @@ input,textarea{
     position: relative;
     cursor: pointer;
 }
-
 
 .camera-overlay {
     position: absolute;
@@ -140,8 +136,6 @@ input,textarea{
 .btn-delete:active {
     transform: scale(0.98);
 }
-
-/* page layout */
 
 .profile-layout{
     display:flex;
@@ -222,8 +216,6 @@ input,textarea{
     font-weight:600;
     color:#333;
 }
-
-/* dashboard */
 
 .dashboard-section{
     margin-top:45px;
