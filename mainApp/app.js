@@ -191,3 +191,27 @@ app.delete('/profile', authenticateToken, async (req, res) => {
         res.status(500).json( {success: false, message: 'Server error' });
     }
 });
+
+app.get('/profile/stats', authenticateToken, async (req, res) => {
+    try {
+        const active = await pool.query(
+            `SELECT COUNT (*) FROM job_claim WHERE user_id = $1 AND status = 'Claimed'`,
+            [req.user.id]
+        );
+        const completed = await pool.query(
+            'SELECT COUNT (*) FROM past_jobs WHERE user_id = $1',
+            [req.user.id]
+        );
+
+        res.json({
+            success: true,
+            stats: {
+                active: parseInt(active.rows[0].count),
+                completed: parseInt(completed.rows[0].count)
+            }
+        });
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error.' });
+    }
+});
