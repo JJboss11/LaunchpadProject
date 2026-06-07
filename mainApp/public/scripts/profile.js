@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const banner = document.querySelector('.profile-banner h1');
         if (banner) {
-            banner.textContent = `Welcome back, ${data.user.firstname}!`;
+            banner.textContent = `Welcome back ${data.user.firstname}!`;
         }
     })
     .catch((err) => console.error(err));
