@@ -77,4 +77,30 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    const deleteButton = document.getElementById('deleteAccount');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', () => {
+            const conformation = confirm('Your account will be permanently deleted. This cannot be undone. Press OK if you would like to continue');
+            if (!conformation) return;
+
+            fetch('/profile', {
+                method: 'DELETE',
+                headers: { 'Authorization' : `Bearer ${token}`}
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    localStorage.removeItem("token");
+                    window.location.href = 'login.html';
+                }else {
+                    showToast(data.message, 'error');
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                showToast('Something went wrong please try again.', 'error')
+            });   
+        });
+    }
 });
