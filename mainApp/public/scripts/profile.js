@@ -41,6 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error(err));
 
+    fetch('/profile/stats', {
+        headers: { 'Authorization': `Bearer ${token}`}
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.success) {
+            const completedELement = document.getElementById('stat-completed');
+            const activeElement = document.getElementById('stat-active');
+            if(completedELement) completedELement.textContent = data.stats.completed;
+            if(activeElement) activeElement.textContent = data.stats.active;
+        }
+    })
+    .catch((err) => console.error(err));
+
     const myForm = document.getElementById('myForm');
     if (myForm) {
         myForm.addEventListener('submit', (e) => {
@@ -77,7 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-
+    
+    // Delete Account Button
     const deleteButton = document.getElementById('deleteAccount');
     if (deleteButton) {
         deleteButton.addEventListener('click', () => {
@@ -103,4 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });   
         });
     }
+
+
 });
