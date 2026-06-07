@@ -121,7 +121,7 @@ app.post('/login', async (req, res) => {
 app.get('/profile', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
-            'SELECT firstname, lastname, email FROM users WHERE id = $1', 
+            'SELECT firstname, lastname, email, address FROM users WHERE id = $1', 
             [req.user.id]
         );
 
@@ -136,4 +136,26 @@ app.get('/profile', authenticateToken, async (req, res) => {
 
     }
     
+});
+
+app.put('/profile', authenticateToken, async (req, res) => {
+    const {firstname, lastname, email, address} = req.body;
+    try {
+        const result = await pool.query(
+            `Update users
+            SET firstname = $1, lastname = $2, email = $3, address = $4
+            WHERE id = $5
+            RETURNING firstname, lastname, email , address`,
+            [firstname, lastname, email, address, req.user.id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'User not found.'})
+        }
+
+        res.json({success:true, user : result.rows[0] });
+    }catch (err) {
+        console.error(err);
+        res.status(500).json( { success: false, message: 'Server error.'});
+    }
 });
