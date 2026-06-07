@@ -78,11 +78,26 @@ app.post('/signup', async (req, res) => {
     const { firstname, lastname, email, password, Address } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const result = await pool.query('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *', [firstname, lastname, email, hashedPassword]);
-        res.json({ success: true, user: result.rows[0] });
+        const result = await pool.query(
+            `INSERT INTO users (firstname, lastname, email, password) 
+            VALUES ($1, $2, $3, $4) 
+            RETURNING id, email`, 
+            [firstname, lastname, email, hashedPassword]
+        );
+
+        const user = result.rows[0];
+
+        const token = jwt.sign(
+            {id: user.id, email: user.email},
+            JWT_SECRET,
+            {expiresIn: '7d'}
+        );
+        
+        res.json({ success: true, token})
+
     } catch (err) {
         console.error(err);
-        res.status(400).json({ success: false, message: 'Server error' });
+        res.status(500).json({ success: false, message: 'Server error' });
     }
 });
 
@@ -124,7 +139,7 @@ app.get('/profile', authenticateToken, async (req, res) => {
             [req.user.id]
         );
 
-        if (result.rows.lenght === 0) {
+        if (result.rows.length === 0) {
             return res.status(404).json({ success: false, message: 'User not found.'})
         }
 
@@ -156,5 +171,23 @@ app.put('/profile', authenticateToken, async (req, res) => {
     }catch (err) {
         console.error(err);
         res.status(500).json( { success: false, message: 'Server error.'});
+    }
+});
+
+app.delete('/profile', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM users WHERE id = $1 RETURNING id',
+            [req.user.id]
+        );
+
+        if (result.rows.length === 0 ) {
+            return res.status(404).json({ success: false, message: 'User no found.'});
+        }
+
+        res.json( {success: true, message: 'Account deleted.'});
+    } catch (err) {
+        console.error (err) 
+        res.status(500).json( {success: false, message: 'Server error' });
     }
 });
