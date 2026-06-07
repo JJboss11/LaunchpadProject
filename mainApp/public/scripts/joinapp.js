@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password");
       const Address = document.getElementById("Address");
 
-      if (myForm) {
+      if (myForm && !isProfile) {
         myForm.addEventListener("submit", (e) => {
           e.preventDefault();
 
