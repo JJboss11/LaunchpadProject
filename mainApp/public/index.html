@@ -11,9 +11,8 @@
         <link rel="stylesheet" href="index.css">
         <link rel="icon" type="image/x-icon" href="/assets/logo2.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <script src="scripts/apps.js"></script>
-
-    </head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <body data-page="home">
         <nav class="nav">
@@ -151,7 +150,7 @@
                     <div class="task-content">
                         <h3 class="task-title">Task title</h3>
                         <p class="task-description">
-                            Task description loaded from Database
+                            Task description loaded from Database 1
                         </p>
                     </div>
 
@@ -166,7 +165,7 @@
                     <div class="task-content">
                         <h3 class="task-title">Task title</h3>
                         <p class="task-description">
-                            Task description loaded from Database
+                            Task description loaded from Database 2
                         </p>
                     </div>
 
@@ -181,13 +180,17 @@
                     <div class="task-content">
                         <h3 class="task-title">Task title</h3>
                         <p class="task-description">
-                            Task description loaded from Database
+                            Task description loaded from Database 3
                         </p>
                     </div>
 
                     <div class="task-meta">
                     </div>
+
                 </article>
+
+
+
             </section>
 
 
@@ -198,8 +201,86 @@
                 </div>
             </section>
 
-        </main>    
+        </main>   
+
+        <div class="task-modal" id="taskModal">
+            <div class="modal">
+                <button class="modal-close" id="modalClose">
+                    <i class="fa fa-times"></i>
+                </button>
+
+                <div class="modal-body">
+                    <div class="modal-left">
+                        <div class="task-modal-img">
+                            <img id="modalImg" src="assets/Placeholder.png" alt="Task image">
+                        </div>
+                        <div class="task-modal-desc">
+                            <p id="modalDesc"></p>
+                        </div>
+                    </div>
+
+                    <div class="modal-right">
+                        <h2 id="modalTitle" class="modal-title"></h2>
+                        <div class="modal-map">
+                            <div id ="map"></div>
+                            <div class="map-placeholder">
+                                <i class="fa fa-map-marker-alt"></i>
+                                <span id="modalLocation">Location TBC</span>
+                            </div>
+                        </div>
+                        <button class="volunteer-btn" id="volunteerBtn">Volunteer now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </body>
+    <script src="scripts/modal.js"></script>  
     <script src="./scripts/helpers.js"></script>
     <script src="./scripts/joinapp.js"></script>
+
+    <script>
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+    navigator.geolocation.watchPosition(success, error);
+
+    let marker, circle, zoomed;
+
+    function success (pos) {
+
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+
+        if(marker) {map.removeLayer(marker)};
+        if(circle) {map.removeLayer(circle)};
+
+        marker = L.marker([lat,lng]).addTo(map)
+        circle = L.circle([lat,lng], {radius:accuracy}).addTo(map)
+
+       if (!zoomed){
+        zoomed = true;
+        map.fitBounds(circle.getBounds());  
+       }
+       
+
+    }
+
+    function error (err) {
+         
+        if (err.code === 1 ){
+            alert("please allow geolocation access!");
+        }
+
+        else{
+          alert("cannot get current location");
+
+        }
+
+    }
+    
+    </script>
+    
 </html>
