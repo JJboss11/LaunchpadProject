@@ -121,23 +121,23 @@ input,textarea{
 }
 
 
-   .btn-delete{
-       display: block;
-       width: 100%;
-       max-width: none;
-       margin-top: 30px;
-       color: #ffffff;
-       background-color: #a63232;
-       padding: 14px;
-       font-weight: 550;
-       font-size: 16px;
-       border: 0;
-       border-radius: 7px;
-       text-transform: uppercase;
-       cursor: pointer;
-       box-sizing: border-box;
-       transition: background-color 0.2s ease, transform 0.1s ease;
-   }
+.btn-delete{
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin-top: 30px;
+    color: #ffffff;
+    background-color: #a63232;
+    padding: 14px;
+    font-weight: 550;
+    font-size: 16px;
+    border: 0;
+    border-radius: 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
 
 .btn-delete:hover {
     background-color: #8b2626;
@@ -190,7 +190,6 @@ input,textarea{
     border-radius:18px;
     padding:28px;
     min-width:180px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
 }
 
 .stat-card h2{
@@ -250,14 +249,12 @@ input,textarea{
     border-radius:18px;
     padding:24px 28px;
     margin-bottom:18px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
     transition:transform .2s ease,
     box-shadow .2s ease;
 }
 
 .dashboard-card:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .dashboard-card h3{
