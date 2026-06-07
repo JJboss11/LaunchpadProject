@@ -31,6 +31,5 @@ Icon?
 # Word/Office autosave backups
 *.tmp
 
-node_modules/
 .env
 ca.pemnode_modules/
