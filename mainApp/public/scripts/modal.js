@@ -16,7 +16,6 @@ function openModal(card) {
     modalLocation.textContent = card.dataset.location || 'Location TBC';
 
     modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
     map.invalidateSize();
@@ -36,14 +35,12 @@ document.addEventListener('click', (e) => {
 
 if (modalClose) modalClose.addEventListener('click', closeModal);
 
-// Close on clicking the dark overlay (not the modal box itself)
 if (modal) {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 }
 
-// Close on Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });
