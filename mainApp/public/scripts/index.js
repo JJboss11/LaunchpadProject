@@ -33,7 +33,7 @@ function renderTasks(tasks) {
     }
 
     grid.innerHTML = tasks.map(task => `
-        <article class="task-card" data-id="${task.id}">
+        <article class="task-card" data-id="${task.id}" data-poster="${task.poster_id}" data-claimed="${task.claimed}">
             <div class="task-image">
                 <img src="${task.image_location || 'assets/Placeholder.png'}" alt="${task.title}">
             </div>
@@ -50,11 +50,6 @@ function renderTasks(tasks) {
     `).join('');
 
     document.querySelector('.results-count').textContent = `Showing ${tasks.length} results`;
-
-    grid.querySelectorAll('.task-card').forEach(card => {
-        const task = allTasks.find(t => t.id == card.dataset.id);
-        card.addEventListener('click', () => openModal(task));
-    });
 }
 
 document.getElementById('search-input').addEventListener('input', e => {
