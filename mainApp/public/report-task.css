@@ -236,6 +236,21 @@ textarea {
     margin-left: 2px;
 }
 
+#formMessage {
+    margin: 0 0 10px;
+    font-size: 14px;
+    min-height: 18px
+}
+
+#formMessage.success {
+    color: #5a754f;
+    font-size: 600;
+}
+
+#formMessage.error {
+    color: #c0392b;
+}
+
 .form-actions {
     display: flex;
     justify-content: flex-end;
