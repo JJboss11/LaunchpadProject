@@ -88,10 +88,10 @@
                     <legend class="form-section-header">Task details</legend>
 
                     <label for="task-title">Title<span class="req">*</span>
-                        <input type="text" class ="task-input" name="title" placeholder="Placeholder" required>
+                        <input type="text" id="task-title" class ="task-input" name="title" placeholder="Placeholder" required>
                     </label>
 
-                    <label for="task-desc">Description>
+                    <label for="task-desc">Description
                         <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
                     </label>
                 </fieldset>
@@ -101,11 +101,11 @@
                     <legend class="form-section-header">Location and Time</legend>
                     <section class="row-2">
                         <label for="task-address">Address
-                            <input type="text" class="task-input" name="address" placeholder="Street address" class="input-medium" required>
+                            <input type="text" id='task-address' class="task-input" name="address" placeholder="Street address" required>
                         </label>
 
                         <label for="task-time">Time
-                            <input type="time" class="task-time" name="time" placeholder="HH:MM" required>
+                            <input type="time" id="task-time" class="task-time" name="time" placeholder="HH:MM" required>
                         </label>
 
                         <label for="task-date">Date
@@ -118,7 +118,7 @@
                 <fieldset class="form-section">
                     <legend class="form-section-header">Volunteers needed</legend>
                     <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
-                        <input type="number" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" class="input-small" required>
+                        <input type="number" id="task-volunteers" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" required>
                     </label>
                 </fieldset>
 
@@ -134,8 +134,10 @@
                     </label>
                 </fieldset>
 
+                <p id="formMessage"></p>
                 <!-- Actions -->
                 <footer class="form-actions"> 
+                    
                     <button type="reset" class="btn-cancel">Cancel</button>
                     <button type="submit" class="btn-submit">Submit</button>
                 </footer>
@@ -143,5 +145,6 @@
             </form>
         </main>
     </body>
+    <script src="./scripts/report-task.js"></script>
     <script src="./scripts/helpers.js"></script>
 </html>
