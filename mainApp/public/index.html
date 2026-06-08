@@ -64,7 +64,7 @@
 
         <aside class="sidebar">
             <div class="filter-header">
-                <span>Filter By</span>
+                <span>Filters</span>
             </div>
 
             <form id="openForm" method="post">
@@ -121,13 +121,13 @@
         </aside>
 
         <main class="main-content">
-            <section class="welcome-banner">
-                <!-- JSON inserts welcome text -->
-            </section>
+            <!-- <section class="welcome-banner">
+                JSON inserts welcome text
+            </section> -->
 
             <section class="task-controls">
                 <div class="search-area">
-                    <input type="text" placeholder="Search tasks...">
+                    <input id="search-input" type="text" placeholder="Search tasks...">
                 </div>
 
                 <div class="sort-area">
@@ -140,64 +140,13 @@
 
             </section>
 
-            <section class="task-grid">
-
-                <article class="task-card">
-                    <div class="task-image">
-                        <img src="assets/Placeholder.png" alt="">
-                    </div>
-
-                    <div class="task-content">
-                        <h3 class="task-title">Task title</h3>
-                        <p class="task-description">
-                            Task description loaded from Database 1
-                        </p>
-                    </div>
-
-                    <div class="task-meta"></div>
-                </article>
-
-                <article class="task-card">
-                    <div class="task-image">
-                        <img src="assets/Placeholder.png" alt="">
-                    </div>
-
-                    <div class="task-content">
-                        <h3 class="task-title">Task title</h3>
-                        <p class="task-description">
-                            Task description loaded from Database 2
-                        </p>
-                    </div>
-
-                    <div class="task-meta"></div>
-                </article>
-
-                <article class="task-card">
-                    <div class="task-image">
-                        <img src="assets/Placeholder.png" alt="">
-                    </div>
-
-                    <div class="task-content">
-                        <h3 class="task-title">Task title</h3>
-                        <p class="task-description">
-                            Task description loaded from Database 3
-                        </p>
-                    </div>
-
-                    <div class="task-meta">
-                    </div>
-
-                </article>
-
-
-
+            <section class="task-grid" id="task-grid">
+                <!-- empty to be dynamically loaded instead -->
             </section>
-
-
 
             <section class="pagination-container">
                 <div class="results-count">
-                    Showing 45 results
+                    <!-- dynamically load result count -->
                 </div>
             </section>
 
@@ -235,52 +184,43 @@
             </div>
         </div>
 
+        <script>
+            var map = L.map('map', { zoomControl: false }).setView([51.505, -0.09], 15);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+            navigator.geolocation.watchPosition(success, error);
 
+            let circle;
+
+            function success(pos) {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+
+                if (circle) { map.removeLayer(circle); }
+
+                circle = L.circle([lat, lng], {
+                    radius: 300,
+                    color: '#4a90d9',
+                    fillColor: '#4a90d9',
+                    fillOpacity: 0.15,
+                    weight: 2,
+                    opacity: 0.4
+                }).addTo(map);
+
+                map.setView([lat, lng], 15);
+            }
+
+            function error(err) {
+                if (err.code === 1) {
+                    alert("please allow geolocation access!");
+                } else {
+                    alert("cannot get current location");
+                }
+            }   
+        </script>
+
+        <script src="./scripts/modal.js"></script>  
+        <script src="./scripts/helpers.js"></script>
+        <script src="./scripts/joinapp.js"></script>
+        <script src="./scripts/index.js"></script>
     </body>
-    <script src="./scripts/helpers.js"></script>
-    <script src="./scripts/joinapp.js"></script>
-
-    <script>
-    var map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-    navigator.geolocation.watchPosition(success, error);
-
-    let marker, circle;
-
-    function success (pos) {
-
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-        const accuracy = pos.coords.accuracy;
-
-        if(marker) {map.removeLayer(marker)};
-        if(circle) {map.removeLayer(circle)};
-
-        marker = L.marker([lat,lng]).addTo(map)
-        circle = L.circle([lat,lng], {radius:accuracy}).addTo(map)
-
-        map.fitBounds(circle.getBounds());
-
-        
-        
-
-    }
-
-    function error (err) {
-         
-        if (err.code === 1 ){
-            alert("please allow geolocation access!");
-        }
-
-        else{
-          alert("cannot get current location");
-
-        }
-
-    }
-    
-    </script>
-
-    <script src="scripts/modal.js"></script>  
-    
 </html>

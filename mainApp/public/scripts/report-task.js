@@ -29,13 +29,13 @@ categoryBtn.forEach(btn => {
 const imageInput = document.getElementById('task-photo');
 
 function validateImage(file) {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    const allowedTypes = ['image/jpeg', 'image/png'];
     if (!allowedTypes.includes(file.type)) {
-        return 'Only JPEG, PNG, or WebP allowed';
+        return 'Only JPEG or PNG allowed';
     }
     
     if (file.size > 5 * 1024 * 1024) {
-        return 'Image must be under 5MB';
+        return 'Image must be under 1MB';
     }
     
     return null;
