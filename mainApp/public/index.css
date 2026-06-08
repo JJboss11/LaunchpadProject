@@ -403,6 +403,17 @@
 
 .volunteer-btn:hover { background: #4a6240; }
 
+.volunteer-btn.own-task {
+    background-color: #9caf9c;
+    cursor: not-allowed;
+}
+
+.volunteer-btn.claimed {
+    background-color: #f5efe2;
+    color : #b8842c;
+    cursor: default;
+}
+
 .task-card { cursor: pointer; }
 
 @media (max-width: 1100px) {
