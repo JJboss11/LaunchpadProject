@@ -30,7 +30,7 @@ app.get('/test-db', async (req, res) => {
     }
 });
 
-
+//get row count of table
 async function getCount(table) {
     const result = await pool.query(`SELECT COUNT(*) FROM ${table}`);
     return parseInt(result.rows[0].count);
@@ -49,6 +49,14 @@ app.get('/stats', async (req, res) =>  {
 //terminal debug for nodemon
 app.listen(port, () => {
     console.log(`MyApp is listening on port ${port}!`);
+});
+
+//config
+app.get('/config', (req, res) => {
+    res.json({
+        supabaseUrl: process.env.GEN_SUPABASE_URL,
+        supabaseAnonKey: process.env.SUPABASE_ANON_KEY
+    });
 });
 
 //====================================LOGIN/SIGNUP======== d===============================
@@ -218,7 +226,7 @@ app.get('/profile/stats', authenticateToken, async (req, res) => {
 
 //==================================Task===============================
 app.post('/tasks', authenticateToken, async (req, res) => {
-    const {title, description, category, address, time, date, volunteers } = req.body;
+    const {title, description, category, address, time, date, volunteers, image_location} = req.body;
 
     const errors = [];
 
@@ -248,10 +256,10 @@ app.post('/tasks', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
             `INSERT INTO job
-            (poster_id, title, description, category, job_location, task_date, task_time, volunteers_needed)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-            RETURNING id, title, description, category, job_location, task_date, task_time, volunteers_needed, status, created_at`, 
-            [req.user.id, title.trim(), description.trim(), category, address || null, date || null, time || null, volunteering]
+            (poster_id, title, description, category, job_location, task_date, task_time, volunteers_needed, image_location)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            RETURNING id, title, description, category, job_location, task_date, task_time, volunteers_needed, image_location, status, created_at`, 
+            [req.user.id, title.trim(), description.trim(), category, address || null, date || null, time || null, volunteering, image_location || null]
         );
 
         res.status(201).json( {success: true, task: result.rows[0]});

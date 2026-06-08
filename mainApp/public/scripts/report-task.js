@@ -3,8 +3,17 @@ if(!token || token === 'undefined') {
     window.location.href = 'login.html';
 }
 
-// Category selection
+let supabase;
 
+async function init() {
+    const configRes = await fetch('/config');
+    const config = await configRes.json();
+
+    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
+    supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
+}
+
+// Category selection
 let selectedCategory = null;
 const categoryBtn = document.querySelectorAll('.cat-btn');
 
@@ -14,6 +23,38 @@ categoryBtn.forEach(btn => {
         btn.classList.add('active');
         selectedCategory = btn.dataset.category;
     });
+});
+
+// Image validation
+const imageInput = document.getElementById('task-photo');
+
+function validateImage(file) {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+        return 'Only JPEG, PNG, or WebP allowed';
+    }
+    
+    if (file.size > 5 * 1024 * 1024) {
+        return 'Image must be under 5MB';
+    }
+    
+    return null;
+}
+
+imageInput.addEventListener('change', () => {
+    const file = imageInput.files[0];
+    if (!file) return;
+    const error = validateImage(file);
+    if (error) {
+        showMessage(error, 'error');
+        imageInput.value = '';
+        return;
+    }
+
+    // Update the label to show the filename
+    document.getElementById('upload-icon').className = 'fa fa-check';
+    document.getElementById('upload-text').textContent = file.name;
+    document.getElementById('upload-hint').textContent = `${(file.size / 1024).toFixed(0)}KB`;
 });
 
 // Form submission
@@ -64,6 +105,35 @@ form.addEventListener('submit', async (e) => {
     }
 
     try {
+        await init()
+
+        const configRes = await fetch('/config');
+        const config = await configRes.json();
+        console.log('config:', config); // check this in devtools
+
+        let imageUrl = null;
+        const file = imageInput.files[0];
+
+        if (file) {
+            const error = validateImage(file);
+            if (error) {
+                showMessage(error, 'error');
+                return;
+            }
+            
+            const fileName = `${Date.now()}-${file.name}`;
+            const { error: uploadError } = await supabase.storage
+                .from('job-images')
+                .upload(fileName, file);
+            
+            if (uploadError) {
+                throw uploadError;
+            }
+
+            const { data: { publicUrl } } = supabase.storage.from('job-images').getPublicUrl(fileName);
+            imageUrl = publicUrl;
+        }
+
         const res = await fetch('/tasks' , {
             method: 'POST',
             headers: {
@@ -77,7 +147,8 @@ form.addEventListener('submit', async (e) => {
                 address,
                 time, 
                 date,
-                volunteers
+                volunteers,
+                image_location: imageUrl
             })
         });
 
