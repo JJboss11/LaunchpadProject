@@ -11,6 +11,8 @@ const port = 3000;
 
 app.use(express.static('public'));
 
+dotenv.config()
+console.log(process.env.DATABASE_URL)
 //====================================MISC===============================
 //load up the login page on startup
 app.get("/", (req, res) => {

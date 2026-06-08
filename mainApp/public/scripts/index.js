@@ -92,11 +92,11 @@ function applyFilters() {
     if (document.getElementById('repair').checked)
         categoryFilters.push('repair');
 
-    if (document.getElementById('education').checked)
-        categoryFilters.push('education');
+    if (document.getElementById('learning').checked)
+        categoryFilters.push('learning');
 
-    if (document.getElementById('leisure').checked)
-        categoryFilters.push('leisure');
+    if (document.getElementById('digital').checked)
+        categoryFilters.push('digital');
 
     if (categoryFilters.length > 0) {
         filtered = filtered.filter(task =>
@@ -146,8 +146,8 @@ document.getElementById('sort-select').addEventListener('change', applyFilters);
     'closed',
     'Progress',
     'repair',
-    'education',
-    'leisure',
+    'learning',
+    'digital',
     '1person',
     '4person',
     '5person'
