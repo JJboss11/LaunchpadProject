@@ -171,5 +171,71 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error(err)) ;
 
+    fetch('/profile/reported-tasks', {
+        headers: {'Authorization' : `Bearer ${token}` } 
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if(!data.success) return;
+
+        const list = document.getElementById('reportedTaskList');
+        if(!list) return;
+        list.innerHTML = '';
+
+        if(data.tasks.length === 0) {
+            const empty = document.createElement('p');
+            empty.textContent = 'You have not reported any tasks yet';
+            list.appendChild(empty);
+            return;
+        }
+
+        data.tasks.forEach((task) => {
+            const card = document.createElement('div');
+            card.className = 'dashboard-card';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = task.title;
+
+            const p = document.createElement('p');
+            p.textContent = task.description;
+
+            const time = document.createElement('span');
+            time.className = 'card-status active';
+            TimeRanges.textContent = formatDateTime(task.task_date, task.task_time);
+
+            const cancelBtn = document.createElement('button');
+            cancelBtn.className = 'btn btn-delete';
+            cancelBtn.textContent = 'Cancle task';
+            cancelBtn.addEventListener('click', () =>{
+                const conformation = confirm('Cancelling this task? Your posted will be removed and cannot be undone');
+                if (!conformation) return;
+
+                cancelBtn.disabled = true;
+                fetch(`/tasks/${task.id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization' : `Bearer ${token}`}
+                })
+                .then((res) => res.json())
+                .then((d) => {
+                    if(d.success) {
+                        card.remove();
+                        showToast('Task cancelled')
+                    }else {
+                        showToast(d.message, 'error');
+                        cancleBtn.disabled = false;
+                    }
+                })
+                .catch((err)=> {
+                    console.error(err);
+                    showToats('Something went wrong, please try agian', 'error');
+                    cancelBtn.disabled = false;
+                })
+            });
+
+            card.append(h3, p, time, cancelBtn);
+            list.appendChild(card);
+        });
+    })
+    .catch((err) => console.error(err));
 
 });
