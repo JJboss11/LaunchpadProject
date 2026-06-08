@@ -244,6 +244,57 @@ app.get('/profile/active-tasks', authenticateToken, async (req, res) => {
     }
 });
 
+app.get('/profile/reported-tasks', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT id, title, description, task_date, task_time
+            FROM job
+            WHERE poster_id = $1
+            Order By created_at DESC`,
+            [req.user.id]
+        );
+
+        res.json({success: true, tasks: result.rows});
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+});
+
+app.delete('/tasks/:id', authenticateToken, async (req, res) => {
+    const jobId = parseInt(req.params.id, 10);
+    if (!Number.isInteger(jobId)) {
+        return res.status(400).json({ success: false, message: 'Invalid task id.'})
+    }
+
+    const client = await pool.connect();
+
+    try {
+        const job = await client.query('SELECT poster_id FROM job WHERE id = $1',
+            [jobId]);
+        if (job.rows[0].length === 0) {
+            return res.status(404).json({ success: false, message: 'Task not found'});
+        }
+        
+        if (job.rows[0].poster_id !== req.user.id) {
+            return res.status(403).json( {success: false, message: 'You can only cancle your own tasks'});
+        }
+
+        await client.query('BEGIN');
+        await client.query('DELETE FROM job_claim WHERE job_id = $1', [jobId])
+        await client.query('DELETE FROM job WHERE id = $1', [jobId])
+        await client.query('COMMIT');
+
+        res.json({ success: true, message: 'Task cancelled'})
+    }catch(err) {
+        await client.query('ROLLBACK');
+        console.error(err)
+        res.status(500).json({ success: false, message: 'Server error'})
+    }finally {
+        client.release();
+    }
+});
+
 //==================================Task===============================
 app.post('/tasks', authenticateToken, async (req, res) => {
     const {title, description, category, address, time, date, volunteers, image_location} = req.body;
