@@ -52,13 +52,107 @@ function renderTasks(tasks) {
     document.querySelector('.results-count').textContent = `Showing ${tasks.length} results`;
 }
 
-document.getElementById('search-input').addEventListener('input', e => {
-    const input_ = e.target.value.toLowerCase().trim();
-    renderTasks(allTasks.filter(t =>
-        (t.title || '').toLowerCase().includes(input_) ||
-        (t.description || '').toLowerCase().includes(input_) ||
-        (t.category || '').toLowerCase().includes(input_)
-    ));
+// filters
+function applyFilters() {
+
+    let filtered = [...allTasks];
+
+    // search
+    const search = document.getElementById('search-input').value.toLowerCase().trim();
+
+    if (search) {
+        filtered = filtered.filter(task =>
+            (task.title || '').toLowerCase().includes(search) ||
+            (task.description || '').toLowerCase().includes(search) ||
+            (task.category || '').toLowerCase().includes(search)
+        );
+    }
+
+    // status filters
+    const statusFilters = [];
+
+    if (document.getElementById('open').checked)
+        statusFilters.push('open');
+
+    if (document.getElementById('closed').checked)
+        statusFilters.push('closed');
+
+    if (document.getElementById('Progress').checked)
+        statusFilters.push('in progress');
+
+    if (statusFilters.length > 0) {
+        filtered = filtered.filter(task =>
+            statusFilters.includes((task.status || '').toLowerCase())
+        );
+    }
+
+    // category filters
+    const categoryFilters = [];
+
+    if (document.getElementById('repair').checked)
+        categoryFilters.push('repair');
+
+    if (document.getElementById('education').checked)
+        categoryFilters.push('education');
+
+    if (document.getElementById('leisure').checked)
+        categoryFilters.push('leisure');
+
+    if (categoryFilters.length > 0) {
+        filtered = filtered.filter(task =>
+            categoryFilters.includes((task.category || '').toLowerCase())
+        );
+    }
+
+    // volunteer filters
+    const one = document.getElementById('1person').checked;
+    const twoToFour = document.getElementById('4person').checked;
+    const fivePlus = document.getElementById('5person').checked;
+
+    if (one || twoToFour || fivePlus) {
+        filtered = filtered.filter(task => {
+            const v = task.volunteers_needed;
+
+            return (
+                (one && v === 1) ||
+                (twoToFour && v >= 2 && v <= 4) ||
+                (fivePlus && v >= 5)
+            );
+        });
+    }
+
+    // sorts
+    const sort = document.getElementById('sort-select').value;
+
+    if (sort === "Newest") {
+        filtered.sort((a, b) =>
+            new Date(b.created_at) - new Date(a.created_at)
+        );
+    } else {
+        filtered.sort((a, b) =>
+            new Date(a.created_at) - new Date(b.created_at)
+        );
+    }
+
+    renderTasks(filtered);
+}
+
+document.getElementById('search-input').addEventListener('input', applyFilters);
+
+document.getElementById('sort-select').addEventListener('change', applyFilters);
+
+[
+    'open',
+    'closed',
+    'Progress',
+    'repair',
+    'education',
+    'leisure',
+    '1person',
+    '4person',
+    '5person'
+].forEach(id => {
+    document.getElementById(id).addEventListener('change', applyFilters);
 });
 
 loadTasks();
