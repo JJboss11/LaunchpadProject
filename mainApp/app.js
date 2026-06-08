@@ -215,3 +215,67 @@ app.get('/profile/stats', authenticateToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error.' });
     }
 });
+
+//==================================Task===============================
+app.post('/tasks', authenticateToken, async (req, res) => {
+    const {title, description, category, address, time, date, volunteers } = req.body;
+
+    const errors = [];
+
+    if (!title || title.trim() == '') {
+        errors.push('Title is required.');
+    }else if (title.length > 255) {
+        errors.push('Title must be 255 characters or fewer.')
+    }
+
+    if (!description || description.trim() == '') {
+        errors.push('Description is required.');
+    }
+
+    if (!category) {
+        errors.push("Please select a category");
+    }
+
+    const volunteering = parseInt(volunteers, 10);
+    if (!Number.isInteger(volunteering) || volunteering < 1 || volunteering > 15) {
+        errors.push('Volunteers needed must be between 1 and 15.');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).json({ success: false, errors});
+    }
+
+    try {
+        const result = await pool.query(
+            `INSERT INTO job
+            (poster_id, title, description, category, job_location, task_date, task_time, volunteers_needed)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING id, title, description, category, job_location, task_date, task_time, volunteers_needed, status, created_at`, 
+            [req.user.id, title.trim(), description.trim(), category, address || null, date || null, time || null, volunteering]
+        );
+
+        res.status(201).json( {success: true, task: result.rows[0]});
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success:false, message: 'Server error'});
+    }
+});
+
+app.get('/tasks', async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT id, title, description, category, job_location, task_date, task_time,
+                    volunteers_needed, status, urgent_flag, image_location, created_at
+            FROM job
+            ORDER BY created_at DESC`
+        );
+
+        res.json({ success: true, tasks: result.rows })
+
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'})
+    }
+        
+});
