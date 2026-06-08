@@ -270,13 +270,16 @@ app.post('/tasks', authenticateToken, async (req, res) => {
     }
 });
 
-app.get('/tasks', async (req, res) => {
+app.get('/tasks', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
-            `SELECT id, title, description, category, job_location, task_date, task_time,
-                    volunteers_needed, status, urgent_flag, image_location, created_at
-            FROM job
-            ORDER BY created_at DESC`
+            `SELECT j.id, j.poster_id, j.title, j.description, j.category, j.job_location, 
+            j.task_date, j.task_time, j.volunteers_needed, j.status, j.urgent_flag, j.image_location, j.created_at,
+            (jc.id IS NOT NULL) AS claimed
+            FROM job j
+            LEFT JOIN job_claim jc ON jc.job_id = j.id AND jc.user_id = $1
+            ORDER BY j.created_at DESC`,
+            [req.user.id]
         );
 
         res.json({ success: true, tasks: result.rows })
@@ -287,4 +290,38 @@ app.get('/tasks', async (req, res) => {
     } 
 });
 
+app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
+    const jobId = parseInt(req.params.id, 10);
 
+    if (!Number.isInteger(jobId)) {
+        return res.status(400).json({ success: false, message: 'Invalid task id.'});
+    }
+
+    try {
+        const job = await pool.query('SELECT id, poster_id FROM job WHERE id = $1',
+            [jobId]);
+        // check if it exist
+        if (job.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Task not found'})
+        }
+        // stop voluneering your own task
+        if (job.rows[0].poster_id === req.user.id) {
+            return res.status(400).json({ success: false, message: "You can't volunteer for your own task."});
+        }
+        // record the claim
+        await pool.query(
+            `INSERT INTO job_claim (job_id, user_id, status)
+            VALUES ($1, $2, 'Claimed')`,
+            [jobId, req.user.id]
+        );
+
+        res.status(201).json({ success: true, message: 'Added to your active tasks'});
+
+    } catch (err) {
+        if (err.code === '23505') {
+            return res.status(409).json({ success: false, message: 'You have already volunteered for this task.'});
+        }
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'});
+    }
+})
