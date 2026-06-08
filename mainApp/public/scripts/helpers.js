@@ -1,5 +1,9 @@
 function showToast(message, type = 'success') {
     const toast = document.getElementById('ConfirmMessage');
+    if (!toast) {
+        console.warn('showToast: no #ConfirmMessage element on this page')
+        return
+    }
     toast.textContent = message;
     toast.classList.remove('show', 'error');
     
