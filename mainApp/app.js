@@ -226,6 +226,24 @@ app.get('/profile/stats', authenticateToken, async (req, res) => {
     }
 });
 
+app.get('/profile/active-tasks', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT j.id, j.title, j.description, j.task_date, j.task_time
+            FROM job_claim jc
+            JOIN job j ON j.id = jc.job_id
+            WHERE jc.user_id = $1 AND jc.status = 'Claimed'
+            ORDER BY j.task_date NULLS LAST`,
+            [req.user.id]
+        );
+
+        res.json({ success: true, tasks: result.rows});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'});
+    }
+});
+
 //==================================Task===============================
 app.post('/tasks', authenticateToken, async (req, res) => {
     const {title, description, category, address, time, date, volunteers, image_location} = req.body;
