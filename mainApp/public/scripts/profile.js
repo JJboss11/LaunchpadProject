@@ -119,5 +119,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function formatDateTime(date, time) {
+        if (!date && !time) return 'Date or Time not provided'
+        let out = '';
+        if (date) {
+            out = new Date(date).toLocaleDateString('en-GB', {
+                weekday: 'short', day: 'numeric', month: 'short'
+            });
+        }
+        if (time) {
+            out += (out ? ' at ' : '') + time.slice(0, 5); // format 00:00
+        }
+        return out;
+    }
+
+    fetch('/profile/active-tasks', {
+        headers: { 'Authorization' : `Bearer ${token}`}
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if(!data.success) return;
+
+        const list = document.getElementById('activeTaskList');
+        if(!list) return;
+        list.innerHTML = ''; // ensures its clear before rendering
+        
+        if(data.tasks.length === 0) {
+            const empty = document.createElement('p');
+            empty.textContent = 'NO active task yet';
+            list.appendChild(empty);
+            return;
+        }
+
+        data.tasks.forEach((tasks) => {
+            const card = document.createElement('div');
+            card.className = 'dashboard-card';
+            
+            const h3 = document.createElement('h3');
+            h3.textContent = tasks.title;
+
+            const p = document.createElement('p');
+            p.textContent = tasks.description;
+
+            const status = document.createElement('span');
+            status.className = 'card-status active';
+            status.textContent = formatDateTime(tasks.task_date, tasks.task_time);
+
+            card.append(h3, p, status);
+            list.appendChild(card);
+        })
+    })
+    .catch((err) => console.error(err)) ;
+
 
 });
