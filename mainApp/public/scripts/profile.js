@@ -201,8 +201,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const time = document.createElement('span');
             time.className = 'card-status active';
-            TimeRanges.textContent = formatDateTime(task.task_date, task.task_time);
+            time.textContent = formatDateTime(task.task_date, task.task_time);
+            
+            //Completed Button
+            const completedBtn = document.createElement('button');
+            completedBtn.className = 'btn btn-complete';
+            completedBtn.textContent = 'Completed';
+            completedBtn.addEventListener('click', () => {
+                const conformation = confirm('Mark this task as compeleted? Volunteers will see it in their completed tasks.');
+                if(!conformation) return;
 
+                completedBtn.disabled = true;
+
+                fetch(`/tasks/${task.id}/complete`, {
+                    method: 'POST',
+                    headers: {'Authorization' : `Bearer ${token}`}
+                })
+                .then((res) => res.json())
+                .then((d) => {
+                    if (d.success) {
+                        card.remove();
+                        showToast('Task marked complete');
+                    }else {
+                        showToast(d.message, 'error');
+                        completedBtn.disabled = false;
+                    }
+                })
+                .catch((err) => {
+                    console.error(err);
+                    showToast('Something went wrong, please try again', 'error');
+                    completedBtn.disabled = false;
+                });
+            })
+            
+            //Cancel button
             const cancelBtn = document.createElement('button');
             cancelBtn.className = 'btn btn-delete';
             cancelBtn.textContent = 'Cancle task';
@@ -222,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         showToast('Task cancelled')
                     }else {
                         showToast(d.message, 'error');
-                        cancleBtn.disabled = false;
+                        cancelBtn.disabled = false;
                     }
                 })
                 .catch((err)=> {
@@ -232,8 +264,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             });
 
-            card.append(h3, p, time, cancelBtn);
+            const taskBtn = document.createElement('div')
+            taskBtn.className = 'card-actions';
+            taskBtn.append(completedBtn, cancelBtn);
+
+            card.append(h3, p, time, taskBtn);
             list.appendChild(card);
+        });
+    })
+    .catch((err) => console.error(err));
+
+    fetch('/profile/completed-tasks', {
+        headers: { 'Authorization': `Bearer ${token}`}
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        if (!data.success) return;
+
+        const list = document.getElementById('completedTaskList');
+        if (!list) return;
+        list.innerHTML = '';
+
+        if (data.tasks.length === 0 ) {
+            const empty = document.createElement('p');
+            empty.textContent = 'No completed tasks yet';
+            list.appendChild(empty);
+            return;
+        }
+
+        data.tasks.forEach((task) => {
+            const card = document.createElement('div');
+            card.className = 'dashboard-card';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = task.title;
+
+            const p = document.createElement('p');
+            p.textContent = task.description;
+
+            const time = document.createElement('span');
+            time.className = 'card-status completed';
+            time.textContent = formatDateTime(task.task_date, task.task_time);
+
+            card.append(h3, p, time);
+            list.appendChild(card)
         });
     })
     .catch((err) => console.error(err));
