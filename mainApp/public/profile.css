@@ -148,6 +148,21 @@ input,textarea{
     transform: scale(0.98);
 }
 
+.card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn-complete {
+    background-color: #5a7350;
+    color: #fff;
+}
+
+.btn-complete:hover {
+    background-color: #4a6042;
+}
+
 .profile-layout{
     display:flex;
     margin-top:85px;
