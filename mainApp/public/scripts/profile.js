@@ -237,9 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
             //Cancel button
             const cancelBtn = document.createElement('button');
             cancelBtn.className = 'btn btn-delete';
-            cancelBtn.textContent = 'Cancle task';
+            cancelBtn.textContent = 'Cancel task';
             cancelBtn.addEventListener('click', () =>{
-                const conformation = confirm('Cancelling this task? Your posted will be removed and cannot be undone');
+                const conformation = confirm('Cancel this task? Your posted will be removed. This cannot be undone');
                 if (!conformation) return;
 
                 cancelBtn.disabled = true;
