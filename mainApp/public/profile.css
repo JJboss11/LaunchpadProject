@@ -260,6 +260,7 @@ input,textarea{
 }
 
 .dashboard-card{
+    position: relative;
     background:white;
     border-radius:18px;
     padding:24px 28px;
@@ -298,11 +299,35 @@ input,textarea{
     color:#5a754f;
 }
 
+.card-address {
+    margin-top: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
 .card-status.active{
     background:#f5efe2;
     color:#b8842c;
 }
 
+.btn-cancel-claim {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: none;
+    border: 1px solid #a63232;
+    color: #a63232;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.btn-cancel-claim:hover {
+    background-color: #a63232;
+    color: #fff
+}
 .volunteer-list {
     margin: 12px 0;
 }
