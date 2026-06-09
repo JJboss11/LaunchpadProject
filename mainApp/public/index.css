@@ -2,24 +2,46 @@
     display: none;
 }
 
+.nav-buttons{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.filter-toggle,
+.hamburger{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:24px;
+    color:white;
+}
+
 .main-content {
-    margin-left: 186px;
+    margin-left: 0;
     margin-top: 85px;
-    width: calc(100% - 186px);
+    width: 100%;
     min-height: calc(100vh - 85px);
     background: #fafafa;
     box-sizing: border-box;
 }
 
-.sidebar {
-    position: fixed;
-    top: 85px;
+.sidebar{
+    position:fixed;
+    top:85px;
+    left:-320px;
+    width:300px;
+    height:calc(100vh - 85px);
+    overflow-y:auto;
+    background:#fcfcfc;
+    border-right:1px solid #e6e6e6;
+    z-index:1500;
+    transition:left .3s ease;
+}
+
+.sidebar.open {
     left: 0;
-    width: 186px;
-    height: calc(100vh - 85px);
-    overflow-y: auto;
-    background: #fcfcfc;
-    border-right: 1px solid #e6e6e6;
 }
 
 .filter-header {
@@ -428,15 +450,6 @@
         margin-left: 0;
         margin-top: 85px;
         width: 100%;
-    }
-
-    .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid #e6e6e6;
-        overflow: visible;
     }
 
     .task-controls {
