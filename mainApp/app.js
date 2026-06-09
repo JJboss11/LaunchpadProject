@@ -245,7 +245,7 @@ app.get('/profile/completed-tasks', authenticateToken, async (req, res) => {
 app.get('/profile/active-tasks', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
-            `SELECT j.id, j.title, j.description, j.task_date, j.task_time
+            `SELECT j.id, j.title, j.description, j.job_location, j.task_date, j.task_time
             FROM job_claim jc
             JOIN job j ON j.id = jc.job_id
             WHERE jc.user_id = $1 AND jc.status = 'Claimed'
@@ -427,6 +427,31 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error'});
     }
 })
+
+app.delete('/tasks/:id/claim', authenticateToken, async (req, res) => {
+    const jobId = parseInt(req.params.id, 10);
+    if(!Number.isInteger(jobId)) {
+        return res.status(400).json({ success: false, message: 'Invalid task id'})
+    }
+
+    try {
+        const result = await pool.query(
+            `DELETE FROM job_claim
+            WHERE job_id = $1 AND user_id = $2 AND status = 'Claimed'
+            RETURNING id`,
+            [jobId, req.user.id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'You have not volunteeered for this task'})
+        }
+
+        res.json({ success: true, message: 'Remove from your active tasks'});
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'})
+    }
+});
 
 app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
     const jobId = parseInt(req.params.id, 10);
