@@ -69,3 +69,4 @@ if (hamburger) {
         icon.classList.toggle('fa-times');
     });
 }
+

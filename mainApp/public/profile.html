@@ -124,15 +124,16 @@
                 </label>
 
                 <input type="file"
-                       id="profileUpload"
-                       accept="image/*"
-                       style="display:none;">
+                        id="profileUpload"
+                        accept="image/*"
+                        style="display:none;">
             </div>
 
             <p class="profile-name">John Smith</p>
             <p class="profile-role">
                 Community Contributor
             </p>
+            <div id="star-display"></div>
         </div>
 
         <form action="/form" id="myForm" method="post">
@@ -152,9 +153,9 @@
                 <input type="text" name="Address" required id="Address">
 
                 <input type="submit"
-                       id="SaveChanges"
-                       value="Save Changes"
-                       class="btn">
+                        id="SaveChanges"
+                        value="Save Changes"
+                        class="btn">
 
                 <button type="button" id="deleteAccount" class="btn btn-delete">
                     Delete account
@@ -164,15 +165,30 @@
 
             </fieldset>
         </form>
-
-
     </aside>
+</div>
 
+<div class="rating-modal" id="ratingModal">
+    <div class="rating-modal-inner">
+        <h2>Rate your volunteer</h2>
+        <p id="rating-volunteer-name"></p>
+        <div class="star-rating" id="submit-star-rating">
+            <span class="fa fa-star" data-value="1"></span>
+            <span class="fa fa-star" data-value="2"></span>
+            <span class="fa fa-star" data-value="3"></span>
+            <span class="fa fa-star" data-value="4"></span>
+            <span class="fa fa-star" data-value="5"></span>
+        </div>
+        <textarea id="rating-review" placeholder="Leave a review (optional)"></textarea>
+        <button id="submit-rating-btn">Submit Rating</button>
+        <button id="skip-rating-btn">Skip</button>
+    </div>
 </div>
 
 <script src="./scripts/joinapp.js"></script>
 <script src="./scripts/helpers.js"></script>
 <script src="./scripts/profile.js"></script>
+<script src="./scripts/rating.js"></script>
 
 </body>
 </html>

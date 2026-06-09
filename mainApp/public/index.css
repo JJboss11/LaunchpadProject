@@ -423,16 +423,35 @@
 }
 
 @media (max-width: 768px) {
+
     .main-content {
         margin-left: 0;
+        margin-top: 85px;
         width: 100%;
     }
 
     .sidebar {
-        display: none;
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e6e6e6;
+        overflow: visible;
     }
 
-    .search-area input {
+    .task-controls {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .search-area,
+    .sort-area {
+        width: 100%;
+    }
+
+    .search-area input,
+    .sort-area select {
         width: 100%;
     }
 
@@ -440,7 +459,17 @@
         grid-template-columns: 1fr;
     }
 
-    .task-card {
-        border-right: none;
+    .modal {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .modal-map {
+        height: 200px;
     }
 }
