@@ -124,15 +124,16 @@
                 </label>
 
                 <input type="file"
-                       id="profileUpload"
-                       accept="image/*"
-                       style="display:none;">
+                        id="profileUpload"
+                        accept="image/*"
+                        style="display:none;">
             </div>
 
             <p class="profile-name">John Smith</p>
             <p class="profile-role">
                 Community Contributor
             </p>
+            <div id="star-display"></div>
         </div>
 
         <form action="/form" id="myForm" method="post">
@@ -152,9 +153,9 @@
                 <input type="text" name="Address" required id="Address">
 
                 <input type="submit"
-                       id="SaveChanges"
-                       value="Save Changes"
-                       class="btn">
+                        id="SaveChanges"
+                        value="Save Changes"
+                        class="btn">
 
                 <button type="button" id="deleteAccount" class="btn btn-delete">
                     Delete account
@@ -164,10 +165,7 @@
 
             </fieldset>
         </form>
-
-
     </aside>
-
 </div>
 
 <script src="./scripts/joinapp.js"></script>

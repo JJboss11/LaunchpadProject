@@ -17,6 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    //helper function for rendering user rating stars
+    function renderStars(rating, count) {
+        const stars = [1,2,3,4,5].map(i => 
+            `<span class="fa fa-star${i <= Math.round(rating || 0) ? ' checked' : ''}"></span>`
+        ).join('');
+        return `${stars} <span class="rating-count">(${count || 0})</span>`;
+    }
+
+    //render star rating
+    async function loadProfile() {
+        const res = await fetch('/profile', { headers: { 'Authorization': `Bearer ${token}` } });
+        const { user } = await res.json();
+        console.log(user);
+        document.getElementById('star-display').innerHTML = renderStars(user.avg_rating, user.total_ratings);
+    }
+
+    loadProfile();
+
     function fillForm(user) {
         document.getElementById('firstname').value = user.firstname || '';
         document.getElementById('lastname').value  = user.lastname  || '';

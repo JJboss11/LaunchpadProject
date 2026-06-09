@@ -107,6 +107,12 @@ input,textarea{
     font-size: 12px;
 }
 
+.rating-count {
+    font-size: 13px;
+    color: #888;
+    margin-left: 4px;
+}
+
 .sidebar-ReportTask {
     position: fixed;
     top: 85px;

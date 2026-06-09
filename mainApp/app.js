@@ -461,3 +461,17 @@ app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
         client.release();
         }
 });
+
+//get user rating for profile stars
+app.get('/profile', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT id, firstname, lastname, email, address, avg_rating, total_ratings, jobs_completed, created_at FROM users WHERE id = $1`,
+            [req.user.id]
+        );
+        res.json({ success: true, user: result.rows[0] });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+});
