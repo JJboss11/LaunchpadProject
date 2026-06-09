@@ -161,11 +161,44 @@ document.addEventListener("DOMContentLoaded", () => {
             const p = document.createElement('p');
             p.textContent = tasks.description;
 
-            const status = document.createElement('span');
-            status.className = 'card-status active';
-            status.textContent = formatDateTime(tasks.task_date, tasks.task_time);
+            const address = document.createElement('p');
+            address.className = 'card-address';
+            address.textContent = `Address: ${tasks.job_location}` || 'Location not provide'
 
-            card.append(h3, p, status);
+            const time = document.createElement('span');
+            time.className = 'card-status active';
+            time.textContent = formatDateTime(tasks.task_date, tasks.task_time);
+
+            const cancelBtn = document.createElement('button');
+            cancelBtn.className = 'btn-cancel-claim';
+            cancelBtn.textContent = 'X Cancel';
+            cancelBtn.addEventListener('click', () => {
+                const conformation = confirm('Withdraw from volutneering for this task? It will be removed from your active task.');
+                if (!conformation) return;
+
+                cancelBtn.disabled = true;
+                fetch(`/tasks/${tasks.id}/claim`, {
+                    method: `DELETE`,
+                    headers: { 'Authorization': `Bearer ${token}`}
+                })
+                .then((res) => res.json())
+                .then((d) => {
+                    if (d.success) {
+                        card.remove();
+                        showToast('Removed from your active tasks');
+                    }else {
+                        showToast(d.message, 'error')
+                        cancelBtn.disabled = false;
+                    }
+                })
+                .catch((err) => {
+                    console.error(err);
+                    showToast('Something went wrong, please try again', 'error');
+                    cancelBtn.disabled = false;
+                });
+            });
+
+            card.append(h3, p, address, time, cancelBtn) ;
             list.appendChild(card);
         })
     })
