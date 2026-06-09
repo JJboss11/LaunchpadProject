@@ -88,6 +88,8 @@ form.addEventListener('submit', async (e) => {
 
     if (!address || address.trim() === '') {
         errors.push('Address is required');
+    } else if (address.length < 8) {
+        errors.push('Please enter a valid address!');
     }
 
     if (!selectedCategory) {
@@ -101,6 +103,24 @@ form.addEventListener('submit', async (e) => {
 
     if (errors.length > 0) {
         showMessage(errors.join(' '), 'error');
+        return;
+    }
+
+    const geoRes = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`
+    );
+
+    const geoData = await geoRes.json();
+
+    if (geoData.length === 0) {
+        showMessage('Address could not be found!', 'error');
+        return;
+    }
+
+    const result = geoData[0];
+
+    if (!result.display_name.toLowerCase().includes('united kingdom')) {
+        showMessage('Please enter a valid UK address!', 'error');
         return;
     }
 
