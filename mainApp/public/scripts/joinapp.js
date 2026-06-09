@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentPath === "") {
     currentPath = "login.html";
   }
+
+  // Only run form logic on form pages
+  if (!['login.html', 'signup.html', 'profile.html', 'report-task.html'].includes(currentPath)) {
+    return;
+  }
+  
     const isLogin = currentPath === "login.html";
     const isReportTask = currentPath === "report-task.html";
     const isProfile = currentPath === "profile.html";
