@@ -212,11 +212,19 @@ app.get('/profile/stats', authenticateToken, async (req, res) => {
             [req.user.id]
         );
 
+        const helped = await pool.query(
+            `SELECT COUNT(DISTINCT pj.user_id) FROM past_jobs pj
+            JOIN job j ON j.id = pj.job_id
+            WHERE j.poster_id = $1`,
+            [req.user.id]
+        );
+
         res.json({
             success: true,
             stats: {
                 active: parseInt(active.rows[0].count),
-                completed: parseInt(completed.rows[0].count)
+                completed: parseInt(completed.rows[0].count),
+                volunteersHelp: parseInt(helped.rows[0].count)
             }
         });
     }catch (err) {
