@@ -67,8 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.success) {
             const completedELement = document.getElementById('stat-completed');
             const activeElement = document.getElementById('stat-active');
+            const helpElement = document.getElementById('stat-helped');
             if(completedELement) completedELement.textContent = data.stats.completed;
             if(activeElement) activeElement.textContent = data.stats.active;
+            if(helpElement) helpElement.textContent = data.stats.volunteersHelp;
         }
     })
     .catch((err) => console.error(err));
