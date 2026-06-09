@@ -304,7 +304,7 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 2000;
+    z-index: 10000;
     align-items: center;
     justify-content: center;
 }
@@ -491,10 +491,18 @@
         grid-template-columns: 1fr;
     }
 
+    .task-modal {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding-top: 20px;
+    }
+
     .modal {
         width: 95%;
-        padding: 20px;
+        max-height: none;
+        margin: 20px auto;
     }
+
 
     .modal-body {
         grid-template-columns: 1fr;
