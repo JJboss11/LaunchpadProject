@@ -6,6 +6,7 @@ const modalImg       = document.getElementById('modalImg');
 const modalLocation  = document.getElementById('modalLocation');
 
 let currentJobId = null;
+let lastFocusedCard = null;
 
 function getUserId() {
     const token = localStorage.getItem('token');
@@ -22,6 +23,7 @@ function getUserId() {
 const currentUserId = getUserId();
 
 function openModal(card) {
+    lastFocusedCard = card;
     const title = card.querySelector('.task-title')?.textContent.trim() || 'Task';
     const desc  = card.querySelector('.task-description')?.textContent.trim() || '';
     const img   = card.querySelector('.task-image img')?.src || 'assets/Placeholder.png';
@@ -52,6 +54,7 @@ function openModal(card) {
     modalLocation.textContent = card.dataset.location || 'Location TBC';
 
     modal.classList.add('open');
+    modalClose.focus();
 
     setTimeout(() => {
     map.invalidateSize();
@@ -61,12 +64,28 @@ function openModal(card) {
 function closeModal() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
+
+    if (lastFocusedCard) {
+        lastFocusedCard.focus();
+    }
 }
 
 
 document.addEventListener('click', (e) => {
     const card = e.target.closest('.task-card');
     if (card) openModal(card);
+});
+
+document.addEventListener('keydown', (e) => {
+    const card = e.target.closest('.task-card');
+
+    if (
+        card &&
+        (e.key === 'Enter' || e.key === ' ')
+    ) {
+        e.preventDefault();
+        openModal(card);
+    }
 });
 
 if (modalClose) modalClose.addEventListener('click', closeModal);

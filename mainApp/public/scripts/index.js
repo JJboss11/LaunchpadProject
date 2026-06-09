@@ -33,8 +33,13 @@ function renderTasks(tasks) {
     }
 
     grid.innerHTML = tasks.map(task => `
-        <article class="task-card" data-id="${task.id}" data-poster="${task.poster_id}" data-claimed="${task.claimed}">
-            <div class="task-image">
+    <article
+        class="task-card"
+        tabindex="0"
+        data-id="${task.id}"
+        data-poster="${task.poster_id}"
+        data-claimed="${task.claimed}">
+        <div class="task-image">
                 <img src="${task.image_location || 'assets/Placeholder.png'}" alt="${task.title}">
             </div>
             <div class="task-content">
