@@ -226,6 +226,23 @@ app.get('/profile/stats', authenticateToken, async (req, res) => {
     }
 });
 
+app.get('/profile/completed-tasks', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            `SELECT j.id, j.title, j.description, j.task_date, j.task_time
+            FROM past_jobs pj
+            JOIN job j ON j.id = pj.job_id
+            WHERE pj.user_id = $1
+            ORDER BY j.task_date NULLS LAST`,
+            [req.user.id]
+        );
+        res.json({ success: true, tasks: result.rows});
+    }catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'});
+    }
+});
+
 app.get('/profile/active-tasks', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
@@ -249,7 +266,7 @@ app.get('/profile/reported-tasks', authenticateToken, async (req, res) => {
         const result = await pool.query(
             `SELECT id, title, description, task_date, task_time
             FROM job
-            WHERE poster_id = $1
+            WHERE poster_id = $1 AND status <> 'Done'
             Order By created_at DESC`,
             [req.user.id]
         );
@@ -349,6 +366,7 @@ app.get('/tasks', authenticateToken, async (req, res) => {
             (jc.id IS NOT NULL) AS claimed
             FROM job j
             LEFT JOIN job_claim jc ON jc.job_id = j.id AND jc.user_id = $1
+            WHERE j.status <> 'Done'
             ORDER BY j.created_at DESC`,
             [req.user.id]
         );
@@ -372,7 +390,7 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
         const job = await pool.query('SELECT id, poster_id FROM job WHERE id = $1',
             [jobId]);
         // check if it exist
-        if (job.rows.length === 0) {
+        if (job.rows[0].length === 0) {
             return res.status(404).json({ success: false, message: 'Task not found'})
         }
         // stop voluneering your own task
@@ -396,3 +414,37 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error'});
     }
 })
+
+app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
+    const jobId = parseInt(req.params.id, 10);
+    if (!Number.isInteger(jobId)) {
+        return res.status(400).json( {success: false, message: 'Invalid task id'})
+        }
+
+    const client = await pool.connect();    
+    try {
+        const job = await client.query('SELECT poster_id FROM job WHERE id = $1', [jobId])
+        if (job.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Task not found'})
+        }
+        if (job.rows[0].poster_id !== req.user.id) {
+        return res.status(403).json({ success: false, message: 'You can only complete your own tasks'})
+        }
+
+        await client.query(
+            `UPDATE job_claim SET status = 'Completed' 
+            Where job_id = $1
+            AND status = 'Claimed'`,
+            [jobId]
+        );
+
+        res.json({ success: true, message: 'Task marked complete'});
+
+       }catch (err) {
+        await client.query('ROLLBACK');
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error'})
+       }finally {
+        client.release();
+       }
+});
