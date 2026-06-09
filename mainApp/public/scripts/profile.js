@@ -233,11 +233,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     completedBtn.disabled = false;
                 });
             })
+
+            const volunteersContainer = document.createElement('div');
+            volunteersContainer.className = 'volunteer-list'
+
+            const volunteerHeading = document.createElement('h4');
+            volunteerHeading.textContent = 'Volunteers';
+            volunteersContainer.appendChild(volunteerHeading);
+
+            if (!task.volunteers || task.volunteers.length === 0) {
+                const none = document.createElement('p');
+                none.textContent = 'No Volunteers yet';
+                volunteersContainer.appendChild(none);
+            }else {
+                const ul = document.createElement('ul');
+                task.volunteers.forEach((v) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${v.firstname} ${v.lastname} - ${v.email}`;
+                    ul.appendChild(li);
+                });
+                volunteersContainer.appendChild(ul)
+            }
             
             //Cancel button
             const cancelBtn = document.createElement('button');
             cancelBtn.className = 'btn btn-delete';
-            cancelBtn.textContent = 'Cancle task';
+            cancelBtn.textContent = 'Cancel task';
             cancelBtn.addEventListener('click', () =>{
                 const conformation = confirm('Cancelling this task? Your posted will be removed and cannot be undone');
                 if (!conformation) return;
@@ -268,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
             taskBtn.className = 'card-actions';
             taskBtn.append(completedBtn, cancelBtn);
 
-            card.append(h3, p, time, taskBtn);
+            card.append(h3, p, time, volunteersContainer, taskBtn);
             list.appendChild(card);
         });
     })
