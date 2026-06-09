@@ -396,3 +396,80 @@ input,textarea{
     }
 
 }
+
+/* rating css */
+.rating-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating-modal.open {
+    display: flex;
+}
+
+.rating-modal-inner {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px;
+    width: 420px;
+    max-width: 95vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rating-modal-inner h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.star-rating .fa-star {
+    font-size: 32px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-rating .fa-star.checked {
+    color: #f5a623;
+}
+
+#rating-review {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#submit-rating-btn {
+    background: #5a754f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#submit-rating-btn:hover { background: #4a6240; }
+#skip-rating-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+}

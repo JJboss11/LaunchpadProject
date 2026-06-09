@@ -240,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (d.success) {
                         card.remove();
                         showToast('Task marked complete');
+                        openRatingModal(task.id, d.claim.id, d.claim.user_id, d.claim.volunteer_name);
                     }else {
                         showToast(d.message, 'error');
                         completedBtn.disabled = false;

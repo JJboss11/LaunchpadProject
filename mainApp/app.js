@@ -475,3 +475,22 @@ app.get('/profile', authenticateToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error' });
     }
 });
+
+//patch route for rating users
+app.patch('/tasks/:id/complete', authenticateToken, async (req, res) => {
+    try {
+        const result = await pool.query(
+            `UPDATE job_claim SET status = 'Completed' WHERE job_id = $1 RETURNING id, user_id`,
+            [req.params.id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'No claim found' });
+        }
+
+        res.json({ success: true, claim: result.rows[0] });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+});
