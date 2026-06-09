@@ -2,6 +2,26 @@
     display: none;
 }
 
+.filter-toggle {
+    display: none;
+}
+
+.nav-buttons{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.filter-toggle,
+.hamburger{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:24px;
+    color:white;
+}
+
 .main-content {
     margin-left: 186px;
     margin-top: 85px;
@@ -11,7 +31,7 @@
     box-sizing: border-box;
 }
 
-.sidebar {
+.sidebar{
     position: fixed;
     top: 85px;
     left: 0;
@@ -20,6 +40,9 @@
     overflow-y: auto;
     background: #fcfcfc;
     border-right: 1px solid #e6e6e6;
+}
+.sidebar.open {
+    left: 0;
 }
 
 .filter-header {
@@ -424,19 +447,28 @@
 
 @media (max-width: 768px) {
 
+    .filter-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 85px;
+        left: -320px;
+        width: 300px;
+        height: calc(100vh - 85px);
+        z-index: 1500;
+        transition: left .3s ease;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
     .main-content {
         margin-left: 0;
         margin-top: 85px;
         width: 100%;
-    }
-
-    .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid #e6e6e6;
-        overflow: visible;
     }
 
     .task-controls {

@@ -156,3 +156,16 @@ document.getElementById('sort-select').addEventListener('change', applyFilters);
 });
 
 loadTasks();
+
+const filterToggle = document.getElementById("filter-toggle");
+const filterSidebar = document.getElementById("filter-sidebar");
+
+if (filterToggle && filterSidebar) {
+    filterToggle.addEventListener("click", () => {
+        filterSidebar.classList.toggle("open");
+    });
+}
+
+console.log("button:", filterToggle);
+console.log("sidebar:", filterSidebar);
+
