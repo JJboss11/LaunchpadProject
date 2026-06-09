@@ -380,18 +380,21 @@ app.post('/tasks', authenticateToken, async (req, res) => {
 });
 
 app.get('/tasks', authenticateToken, async (req, res) => {
-    try {
-        const result = await pool.query(
-            `SELECT j.id, j.poster_id, j.title, j.description, j.category, j.job_location, 
-            j.task_date, j.task_time, j.volunteers_needed, j.status, j.urgent_flag, j.image_location, j.created_at,
-            (jc.id IS NOT NULL) AS claimed
-            FROM job j
-            LEFT JOIN job_claim jc ON jc.job_id = j.id AND jc.user_id = $1
-            WHERE j.status <> 'Done'
-            ORDER BY j.created_at DESC`,
-            [req.user.id]
-        );
-
+            try {
+                const result = await pool.query(
+                    `SELECT j.id, j.poster_id, j.title, j.description, j.category, j.job_location,
+                            j.task_date, j.task_time, j.volunteers_needed, j.status, j.urgent_flag,
+                            j.image_location, j.created_at,
+                            (jc.id IS NOT NULL) AS claimed,
+                            COUNT(jc2.id)::int AS volunteers_signed_up
+                     FROM job j
+                              LEFT JOIN job_claim jc ON jc.job_id = j.id AND jc.user_id = $1
+                              LEFT JOIN job_claim jc2 ON jc2.job_id = j.id AND jc2.status = 'Claimed'
+                     WHERE j.status <> 'Done'
+                     GROUP BY j.id, jc.id
+                     ORDER BY j.created_at DESC`,
+                    [req.user.id]
+                );
         res.json({ success: true, tasks: result.rows })
 
     }catch (err) {

@@ -47,7 +47,7 @@ function renderTasks(tasks) {
                 <p class="task-description">${task.description}</p>
             </div>
             <div class="task-meta">
-                <span class="task-category">${task.category}</span>
+                <span class="task-volunteers">${task.volunteers_signed_up}/${task.volunteers_needed} volunteers</span>
                 <span class="task-volunteers">${task.volunteers_needed} volunteer(s) needed</span>
                 <span class="task-status ${task.status}">${task.status}</span>
             </div>
