@@ -303,6 +303,24 @@ input,textarea{
     color:#b8842c;
 }
 
+.volunteer-list {
+    margin: 12px 0;
+}
+
+.volunteer-list h4 {
+    margin: 0 0 4px;
+    font-size: 0.9rem;
+}
+
+.volunteer-list ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.volunteer-list li {
+    font-size: 0.85rem;
+}
+
 .profile-role{
     margin-top:-8px;
     color:#6f8b65;
