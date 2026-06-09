@@ -264,10 +264,24 @@ app.get('/profile/active-tasks', authenticateToken, async (req, res) => {
 app.get('/profile/reported-tasks', authenticateToken, async (req, res) => {
     try {
         const result = await pool.query(
-            `SELECT id, title, description, task_date, task_time
-            FROM job
-            WHERE poster_id = $1 AND status <> 'Done'
-            Order By created_at DESC`,
+            `SELECT 
+            j.id, j.title, j.description, j.task_date, j.task_time,
+            COALESCE(
+                json_agg(
+                    json_build_object(
+                        'firstname', u.firstname,
+                        'lastname', u.lastname,
+                        'email', u.email
+                        )
+                    ) FILTER (WHERE u.id IS NOT NULL),
+                    '[]'
+                ) AS volunteers
+            From job j
+            LEFT JOIN job_claim jc ON jc.job_id = j.id
+            LEFT JOIN users u ON u.id = jc.user_id
+            WHERE j.poster_id = $1 AND j.status <> 'Done'
+            GROUP BY J.id
+            ORDER BY j.created_at`,
             [req.user.id]
         );
 
