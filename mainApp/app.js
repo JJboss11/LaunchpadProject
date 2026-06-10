@@ -414,7 +414,7 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
         const job = await pool.query('SELECT id, poster_id FROM job WHERE id = $1',
             [jobId]);
         // check if it exist
-        if (job.rows[0].length === 0) {
+        if (job.rows.length === 0) {
             return res.status(404).json({ success: false, message: 'Task not found'})
         }
         // stop voluneering your own task
@@ -422,11 +422,22 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
             return res.status(400).json({ success: false, message: "You can't volunteer for your own task."});
         }
         // record the claim
-        await pool.query(
+        const claim = await pool.query(
             `INSERT INTO job_claim (job_id, user_id, status)
-            VALUES ($1, $2, 'Claimed')`,
+            SELECT j.id, $2, 'Claimed'
+            FROM job j
+            WHERE j.id = $1
+            AND (
+                SELECT COUNT(*) FROM job_claim
+                WHERE job_id = j.id AND status = 'Claimed'
+            ) < j.volunteers_needed
+            RETURNING id`,
             [jobId, req.user.id]
         );
+
+        if (claim.rows.length === 0) {
+            return res.status(409).json({ success: false, message: 'This task already has enough volunteers'})
+        }
 
         res.status(201).json({ success: true, message: 'Added to your active tasks'});
 
