@@ -75,24 +75,6 @@ function applyFilters() {
         );
     }
 
-    // status filters
-    const statusFilters = [];
-
-    if (document.getElementById('open').checked)
-        statusFilters.push('open');
-
-    if (document.getElementById('closed').checked)
-        statusFilters.push('closed');
-
-    if (document.getElementById('Progress').checked)
-        statusFilters.push('in progress');
-
-    if (statusFilters.length > 0) {
-        filtered = filtered.filter(task =>
-            statusFilters.includes((task.status || '').toLowerCase())
-        );
-    }
-
     // category filters
     const categoryFilters = [];
 
