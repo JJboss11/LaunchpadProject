@@ -45,7 +45,7 @@
                 <div class="nav-divider"></div>
 
                 <a href="report-task.html" class="report-btn">
-                    <span class="report-text">Report Task</span>
+                    <span class="report-text">Create a task</span>
                     <i class="fa-solid fa-plus report-plus"></i>
                 </a>
 
@@ -62,20 +62,12 @@
         <div class="nav-overlay" id="nav-overlay"></div>
 
         <aside class="sidebar-report">
-            <div class="category-label">
-                Category
-            </div>
-
             <div class="category-grid">
-                <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
-                <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
-                <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
-                <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
             </div>
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title">Report a task</h1>
+            <h1 class="page-title">Create a task</h1>
 
             <form id="reportForm" novalidate>
 
@@ -129,6 +121,13 @@
                         <input type="file" id="task-photo" name="photo" accept="image/jpeg,image/png" class="sr-only">
                     </label>
                 </fieldset>
+
+                 <div class="category-label">
+                Category </div>
+                <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
+                <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
+                <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>
+                <button type="button" class="cat-btn" data-category="Other"><i class="fa fa-ellipsis-h"></i><span>Other</span></button>
 
                 <p id="formMessage"></p>
                 <!-- Actions -->

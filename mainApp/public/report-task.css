@@ -267,7 +267,6 @@ textarea {
     font-family: inherit;
     color: #444;
     cursor: pointer;
-    transition: background 0.15s;
 }
 
 .btn-cancel:hover {
@@ -284,7 +283,6 @@ textarea {
     font-family: inherit;
     color: #fff;
     cursor: pointer;
-    transition: background 0.15s;
 }
 
 .btn-submit:hover {
