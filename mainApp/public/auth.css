@@ -127,3 +127,36 @@ input.input-error {
 .loginlink {
     color: #5a754f;
 }
+
+@media (max-width: 768px) {
+    .logo-wrap p { display: none; }
+
+    .nav-right {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100%;
+        background-color: #93a18e49;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 100px 20px 20px 20px;
+        z-index: 1000;
+        transition: right 0.3s ease;
+    }
+
+    .nav-right.open {
+        right: 0;
+        display: flex;
+    }
+    .report-plus {
+        max-width: 20px;
+        opacity: 1;
+    }
+
+.imgForm{
+  width: 60%;
+}
+
+}
