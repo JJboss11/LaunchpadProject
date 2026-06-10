@@ -17,6 +17,7 @@ main {
 }
 
 form {
+    max-width: 100%;
     width: 500px;
     margin: 0;
     padding: 25px 30px;
@@ -123,7 +124,6 @@ input.input-error {
     transform: scale(0.98);
 }
 
-/* ── LINK ── */
 .loginlink {
     color: #5a754f;
 }
@@ -131,32 +131,24 @@ input.input-error {
 @media (max-width: 768px) {
     .logo-wrap p { display: none; }
 
+    .nav{
+        padding: 10px 15px;
+        min-height: 60px;
+    }
+
     .nav-right {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        width: 260px;
-        height: 100%;
-        background-color: #93a18e49;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 100px 20px 20px 20px;
-        z-index: 1000;
-        transition: right 0.3s ease;
+        max-width: 280px;
+        padding-top: 80px;
     }
 
     .nav-right.open {
         right: 0;
         display: flex;
     }
-    .report-plus {
-        max-width: 20px;
-        opacity: 1;
-    }
 
-.imgForm{
-  width: 60%;
+    .imgform{
+         width: 100%;
+         padding: 5px;
 }
-
+   
 }
