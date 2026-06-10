@@ -132,6 +132,13 @@ if (volunteerBtn) {
                 volunteerBtn.className = 'volunteer-btn claimed';
                 const card = document.querySelector(`.task-card[data-id="${currentJobId}"]`);
                 if (card) card.dataset.claimed = 'true';
+
+                const task = allTasks.find(t => String(t.id) === String(currentJobId));
+                if (task) {
+                    task.claimed = true;
+                    task.volunteers_signed_up = (task.volunteers_signed_up || 0) + 1
+                }
+
                 showToast(data.message);
             }else {
                 showToast(data.message, 'error');
