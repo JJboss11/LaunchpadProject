@@ -149,9 +149,6 @@ document.getElementById('search-input').addEventListener('input', applyFilters);
 document.getElementById('sort-select').addEventListener('change', applyFilters);
 
 [
-    'open',
-    'closed',
-    'Progress',
     'repair',
     'learning',
     'digital',
