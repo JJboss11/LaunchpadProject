@@ -450,7 +450,43 @@ app.post('/tasks/:id/claim', authenticateToken, async (req, res) => {
     }
 })
 
-<<<<<<< Updated upstream
+app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
+    const jobId = parseInt(req.params.id, 10);
+    if (!Number.isInteger(jobId)) {
+        return res.status(400).json({ success: false, message: 'Invalid task id' });
+    }
+
+    const client = await pool.connect();
+    try {
+        const job = await client.query('SELECT poster_id FROM job WHERE id = $1', [jobId]);
+        if (job.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Task not found' });
+        }
+        if (job.rows[0].poster_id !== req.user.id) {
+            return res.status(403).json({ success: false, message: 'You can only complete your own tasks' });
+        }
+
+        await client.query(
+            `UPDATE job_claim SET status = 'Completed' WHERE job_id = $1 AND status = 'Claimed'`,
+            [jobId]
+        );
+
+        await client.query(
+            `UPDATE job SET status = 'Done' WHERE id = $1`,
+            [jobId]
+        );
+
+        res.json({ success: true, message: 'Task marked complete' });
+
+    } catch (err) {
+        await client.query('ROLLBACK');
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Server error' });
+    } finally {
+        client.release();
+    }
+});
+
 app.delete('/tasks/:id/claim', authenticateToken, async (req, res) => {
     const jobId = parseInt(req.params.id, 10);
     if(!Number.isInteger(jobId)) {
@@ -473,88 +509,5 @@ app.delete('/tasks/:id/claim', authenticateToken, async (req, res) => {
     }catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: 'Server error'})
-    }
-});
-
-app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
-    const jobId = parseInt(req.params.id, 10);
-    if (!Number.isInteger(jobId)) {
-        return res.status(400).json( {success: false, message: 'Invalid task id'})
-        }
-=======
-// app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
-//     const jobId = parseInt(req.params.id, 10);
-//     if (!Number.isInteger(jobId)) {
-//         return res.status(400).json( {success: false, message: 'Invalid task id'})
-//         }
->>>>>>> Stashed changes
-
-//     const client = await pool.connect();    
-//     try {
-//         const job = await client.query('SELECT poster_id FROM job WHERE id = $1', [jobId])
-//         if (job.rows.length === 0) {
-//             return res.status(404).json({ success: false, message: 'Task not found'})
-//         }
-//         if (job.rows[0].poster_id !== req.user.id) {
-//         return res.status(403).json({ success: false, message: 'You can only complete your own tasks'})
-//         }
-
-//         await client.query(
-//             `UPDATE job_claim SET status = 'Completed' 
-//             Where job_id = $1
-//             AND status = 'Claimed'`,
-//             [jobId]
-//         );
-
-//         res.json({ success: true, message: 'Task marked complete'});
-
-//         }catch (err) {
-//         await client.query('ROLLBACK');
-//         console.error(err);
-//         res.status(500).json({ success: false, message: 'Server error'})
-//         }finally {
-//         client.release();
-//         }
-// });
-
-//get user rating for profile stars
-app.get('/profile', authenticateToken, async (req, res) => {
-    try {
-        const result = await pool.query(
-            `SELECT id, firstname, lastname, email, address, avg_rating, total_ratings, jobs_completed, created_at FROM users WHERE id = $1`,
-            [req.user.id]
-        );
-        res.json({ success: true, user: result.rows[0] });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ success: false, message: 'Server error' });
-    }
-});
-
-app.post('/tasks/:id/complete', authenticateToken, async (req, res) => {
-    try {
-        const result = await pool.query(
-            `UPDATE job_claim jc SET status = 'Completed' WHERE jc.job_id = $1 RETURNING jc.id, jc.user_id`,
-            [req.params.id]
-        );
-
-        if (result.rows.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: 'No claim found'
-            });
-        }
-
-        res.json({
-            success: true,
-            claim: result.rows[0]
-        });
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            success: false,
-            message: 'Server error'
-        });
     }
 });
