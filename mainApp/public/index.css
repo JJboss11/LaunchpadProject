@@ -424,6 +424,12 @@
     cursor: pointer;
 }
 
+.volunteer-btn.full {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
 .volunteer-btn:hover { background: #4a6240; }
 
 .volunteer-btn.own-task {
