@@ -150,7 +150,7 @@ a {
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
     white-space: nowrap;
-    z-index: 9999;
+    z-index: 10001;
 }
 
 #ConfirmMessage.show {
