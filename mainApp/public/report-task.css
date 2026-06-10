@@ -1,18 +1,4 @@
-.sidebar-report {
-    position: fixed;
-    top: 85px;
-    left: 0;
-    width: 330px;
-    height: calc(100vh - 85px);
-    background: #f8f8f8;
-    border-right: 1px solid #e5e5e5;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 24px;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
+
 
 .category-label {
     font-size: 14px;
@@ -77,12 +63,11 @@
 }
 
 .main-content {
-    margin-left: 330px;
     margin-top: 85px;
-    padding: 20px 24px;
-    min-height: calc(100vh - 85px);
-    background: #fafafa;
-    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    padding: 20px;
 }
 
 .page-title {
@@ -290,15 +275,6 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    .sidebar-report {
-        position: static;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        padding: 16px;
-        margin-top: 85px;
-    }
 
     .category-grid {
         flex-direction: row;
