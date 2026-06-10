@@ -15,7 +15,7 @@ function showToast(message, type = 'success') {
 
     setTimeout(() => {
         toast.classList.remove('show', 'error');
-    }, 2000);
+    }, 2500);
 }
 
 //signout button that deletes JWT token
