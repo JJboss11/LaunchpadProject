@@ -38,7 +38,9 @@ function renderTasks(tasks) {
         tabindex="0"
         data-id="${task.id}"
         data-poster="${task.poster_id}"
-        data-claimed="${task.claimed}">
+        data-claimed="${task.claimed}"
+        data-needed="${task.volunteers_needed}"
+        data-signed="${task.volunteers_signed_up}">
         <div class="task-image">
                 <img src="${task.image_location || 'assets/Placeholder.png'}" alt="${task.title}">
             </div>
