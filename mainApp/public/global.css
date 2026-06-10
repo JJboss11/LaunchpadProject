@@ -142,15 +142,16 @@ a {
     transform: translateX(-50%) translateY(20px);
     background-color: #5a754f;
     color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 18px 36px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
     font-family: 'Lexend', sans-serif;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
-    white-space: nowrap;
     z-index: 10001;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 #ConfirmMessage.show {
