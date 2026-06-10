@@ -1,3 +1,5 @@
+const token = localStorage.getItem('token');
+
 let ratingData = {};
 let selectedRating = null;
 

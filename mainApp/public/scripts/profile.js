@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if(data.tasks.length === 0) {
             const empty = document.createElement('p');
-            empty.textContent = 'NO active task yet';
+            empty.textContent = 'No active tasks';
             list.appendChild(empty);
             return;
         }
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(data.tasks.length === 0) {
             const empty = document.createElement('p');
-            empty.textContent = 'You have not reported any tasks yet';
+            empty.textContent = 'No reported tasks';
             list.appendChild(empty);
             return;
         }
