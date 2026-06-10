@@ -33,6 +33,9 @@ function openModal(card) {
     const volunteerBtn = document.getElementById('volunteerBtn');
     if (volunteerBtn) {
         const posterId = parseInt(card.dataset.poster, 10)
+        const needed = parseInt(card.dataset.needed, 10);
+        const signed = parseInt(card.dataset.signed, 10);
+        const isFull = Number.isInteger(needed) && signed >= needed;
         if (currentUserId && posterId === currentUserId) {
             volunteerBtn.disabled = true;
             volunteerBtn.textContent = 'Your Task';
@@ -41,6 +44,10 @@ function openModal(card) {
             volunteerBtn.disabled = true;
             volunteerBtn.textContent = 'Volunteering';
             volunteerBtn.className = 'volunteer-btn claimed';
+        } else if (isFull) {
+            volunteerBtn.disabled = false;
+            volunteerBtn.textContent = "Fully volunteered"
+            volunteerBtn.className = 'volunteer-btn full'
         } else {
             volunteerBtn.disabled = false;
             volunteerBtn.textContent = 'Volunteer Now';
@@ -104,6 +111,11 @@ const volunteerBtn = document.getElementById('volunteerBtn');
 if (volunteerBtn) {
     volunteerBtn.addEventListener('click', () => {
         if (!currentJobId) return;
+
+        if (volunteerBtn.classList.contains('full')) {
+            showToast('This task already has enough volunteers', 'error')
+            return;
+        }
 
         const token = localStorage.getItem('token');
         volunteerBtn.disabled = true;
