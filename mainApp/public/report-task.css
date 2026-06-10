@@ -279,13 +279,10 @@ textarea {
     .category-grid {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px;
     }
 
     .cat-btn {
-        width: calc(50% - 5px);
-        padding: 14px;
-        font-size: 15px;
+        width: 100%;
     }
 
     .cat-btn span {
