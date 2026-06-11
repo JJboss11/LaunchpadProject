@@ -61,11 +61,6 @@
 
         <div class="nav-overlay" id="nav-overlay"></div>
 
-        <aside class="sidebar-report">
-            <div class="category-grid">
-            </div>
-        </aside>
-
         <main class="main-content">
             <h1 class="page-title">Create a task</h1>
 
@@ -75,11 +70,11 @@
                 <fieldset class="form-section">
                     <legend class="form-section-header">Task details</legend>
 
-                    <label for="task-title">Title<span class="req">*</span>
+                    <label for="task-title">Title - explain the main aim of your task<span class="req">*</span>
                         <input type="text" id="task-title" class ="task-input" name="title" placeholder="Placeholder" required>
                     </label>
 
-                    <label for="task-desc">Description<span class="req">*</span>
+                    <label for="task-desc">Description - add any extra details you feel are neccessary to communicate how the task needs to be done<span class="req">*</span>
                         <textarea id="task-desc" name="description" placeholder="Placeholder" required></textarea>
                     </label>
                 </fieldset>
@@ -88,11 +83,11 @@
                 <fieldset class="form-section">
                     <legend class="form-section-header">Location and Time</legend>
                     <section class="row-2">
-                        <label for="task-address">Address<span class="req">*</span>
+                        <label for="task-address">Address - The location of your task<span class="req">*</span>
                             <input type="text" id='task-address' class="task-input" name="address" placeholder="Street address" required>
                         </label>
 
-                        <label for="task-time">Time
+                        <label for="task-time">Time - When does your task need to be done by?
                             <input type="time" id="task-time" class="task-time" name="time" placeholder="HH:MM" required>
                         </label>
 
@@ -104,7 +99,7 @@
 
                 <!-- Volunteers needed -->
                 <fieldset class="form-section">
-                    <legend class="form-section-header">Volunteers needed</legend>
+                    <legend class="form-section-header">Volunteers needed - A maximum of 15 is allowed</legend>
                     <label for="task-volunteers">How many volunteers do you need?<span class="req">*</span>
                         <input type="number" id="task-volunteers" class="task-volunteers" name="volunteers" placeholder="Max 15" min="1" max="15" required>
                     </label>
@@ -112,7 +107,7 @@
 
                 <!-- Photo -->
                 <fieldset class="form-section">    
-                    <legend class="form-section-header">Photo</legend>
+                    <legend class="form-section-header">Photo - Optionally upload an image of your task to help potential volunteers better understand your request</legend>
 
                     <label for="task-photo" class="photo-upload-area">
                         <i class="fa fa-camera" aria-hidden="true" id="upload-icon"></i>
@@ -122,8 +117,9 @@
                     </label>
                 </fieldset>
 
-                 <div class="category-label">
+                <div class="category-label">
                 Category </div>
+                <p>Please select one of the following categories that your task falls under</p>
                 <button type="button" class="cat-btn" data-category="Repair"><i class="fa fa-wrench"></i> <span>Repair</span></button>
                 <button type="button" class="cat-btn" data-category="Learning"><i class="fa fa-graduation-cap"></i><span>Learning</span></button>
                 <button type="button" class="cat-btn" data-category="Digital"><i class="fa fa-desktop"></i><span>Digital</span></button>

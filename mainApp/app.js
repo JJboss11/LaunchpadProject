@@ -81,7 +81,6 @@ function authenticateToken(req, res, next) {
     
 }
 
-
 //signup
 app.post('/signup', async (req, res) => {
     const { firstname, lastname, email, password, Address } = req.body;
